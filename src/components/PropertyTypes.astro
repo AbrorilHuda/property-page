@@ -1,0 +1,82 @@
+---
+import { whatsappLink } from '../utils/config';
+
+const properties = [
+  {
+    name: 'Tipe 36',
+    tagline: 'Nyaman untuk Keluarga Baru',
+    price: 'Mulai dari Rp 250 Juta',
+    rooms: '2 Kamar Tidur • 1 Kamar Mandi',
+    size: 'Luas Bangunan 36m²',
+    features: ['Ruang Tamu', 'Dapur', 'Teras', 'Taman Depan'],
+  },
+  {
+    name: 'Tipe 45',
+    tagline: 'Lega untuk Keluarga Berkembang',
+    price: 'Mulai dari Rp 350 Juta',
+    rooms: '2 Kamar Tidur • 2 Kamar Mandi',
+    size: 'Luas Bangunan 45m²',
+    features: ['Ruang Keluarga', 'Dapur', 'Teras', 'Taman', 'Carport'],
+  },
+  {
+    name: 'Tipe 60',
+    tagline: 'Hunian Premium untuk Kenyamanan Maksimal',
+    price: 'Mulai dari Rp 500 Juta',
+    rooms: '3 Kamar Tidur • 2 Kamar Mandi',
+    size: 'Luas Bangunan 60m²',
+    features: ['Ruang Keluarga', 'Dapur', 'Walk-in Closet', 'Taman', 'Carport', 'Gudang'],
+  },
+];
+---
+
+<section id="property-types" class="py-16 md:py-20 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-bumi-navy-dark text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+        Temukan Tipe Rumah Sesuai Kebutuhan Anda
+      </h2>
+      <p class="text-bumi-navy-light text-base sm:text-lg max-w-2xl mx-auto">
+        Tersedia berbagai tipe unit — dari hunian pertama untuk keluarga muda hingga rumah subsidi terjangkau. Semua dibangun dengan standar kualitas terbaik.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {properties.map((prop) => (
+        <div class="group bg-white border border-bumi-sage rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <!-- Placeholder floor plan area -->
+          <div class="h-48 bg-gradient-to-br from-bumi-off-white to-bumi-sage flex items-center justify-center relative">
+            <svg class="w-20 h-20 text-bumi-green-dark/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            <span class="absolute top-4 left-4 bg-bumi-green-dark text-white text-xs font-semibold px-3 py-1 rounded-full">{prop.name}</span>
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-bumi-navy-dark text-xl font-bold mb-1">{prop.name}</h3>
+            <p class="text-bumi-navy-light text-sm mb-4">{prop.tagline}</p>
+
+            <div class="text-bumi-green-dark text-xl font-bold mb-3">{prop.price}</div>
+
+            <div class="text-sm text-bumi-navy-light mb-2">{prop.rooms}</div>
+            <div class="text-sm text-bumi-navy-light mb-4">{prop.size}</div>
+
+            <div class="flex flex-wrap gap-2 mb-5">
+              {prop.features.map((f) => (
+                <span class="text-xs bg-bumi-off-white text-bumi-navy-dark px-3 py-1 rounded-full">{f}</span>
+              ))}
+            </div>
+
+            <a
+              href={whatsappLink(`Halo, saya tertarik dengan ${prop.name}. Boleh info lebih lanjut?`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full text-center bg-bumi-green-dark text-white py-3 rounded-xl font-semibold hover:bg-bumi-green-medium transition-colors duration-200 min-h-[44px]"
+            >
+              Konsultasi {prop.name}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+const facilities = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`,
+    label: 'Keamanan 24 Jam',
+    description: 'Petugas keamanan siaga 24 jam untuk ketenangan keluarga.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>`,
+    label: 'Jalan Lebar',
+    description: 'Akses jalan lingkungan yang lebar dan nyaman.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
+    label: 'Taman & Ruang Hijau',
+    description: 'Taman bermain dan area terbuka hijau untuk keluarga.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+    label: 'Dekat Fasilitas Umum',
+    description: 'Dekat sekolah, rumah sakit, dan pusat perbelanjaan.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`,
+    label: 'Drainase Baik',
+    description: 'Sistem drainase terencana, bebas banjir.',
+  },
+];
+---
+
+<section id="facilities" class="py-16 md:py-20 bg-bumi-off-white">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-bumi-navy-dark text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+        Fasilitas Lengkap untuk Hidup yang Lebih Baik
+      </h2>
+      <p class="text-bumi-navy-light text-base sm:text-lg">
+        Kami menyediakan fasilitas terbaik untuk kenyamanan dan keamanan Anda.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+      {facilities.map((item) => (
+        <div class="bg-white rounded-2xl p-5 md:p-6 text-center hover:shadow-md transition-shadow duration-200">
+          <div class="inline-flex items-center justify-center w-14 h-14 bg-bumi-green-light/15 rounded-xl text-bumi-green-dark mb-4">
+            <Fragment set:html={item.icon} />
+          </div>
+          <h3 class="text-bumi-navy-dark text-sm font-bold mb-2">{item.label}</h3>
+          <p class="text-bumi-navy-light text-xs leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

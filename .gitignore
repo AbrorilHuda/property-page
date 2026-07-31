@@ -3,6 +3,8 @@ dist/
 
 # generated types
 .astro/
+.kiro/
+prd.md
 
 # dependencies
 node_modules/
