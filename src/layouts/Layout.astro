@@ -17,7 +17,7 @@ const siteUrl = 'https://bumi-group.com';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#2B3245" />
+  <meta name="theme-color" content="#1E2536" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={siteUrl} />
@@ -27,14 +27,8 @@ const siteUrl = 'https://bumi-group.com';
   <meta property="og:url" content={siteUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+  <meta property="og:image" content={`${siteUrl}/images/hero_serene_house.png`} />
   <meta property="og:locale" content="id_ID" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -43,25 +37,42 @@ const siteUrl = 'https://bumi-group.com';
       "@type": "Organization",
       "name": "Bumi Group",
       "url": "https://bumi-group.com",
-      "logo": "https://bumi-group.com/logo.png",
+      "logo": "https://bumi-group.com/bumigrouplogo.png",
       "description": "Developer perumahan terpercaya dengan hunian berkualitas, lokasi strategis, dan lingkungan asri.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Jakarta",
         "addressCountry": "ID"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "availableLanguage": "Indonesian"
       }
     }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/bumigrouplogo.png" />
 </head>
 <body>
   <slot />
+
+  <!-- Scroll Reveal Motion Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
 

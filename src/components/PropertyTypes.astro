@@ -3,80 +3,274 @@ import { whatsappLink } from '../utils/config';
 
 const properties = [
   {
-    name: 'Tipe 36',
-    tagline: 'Nyaman untuk Keluarga Baru',
-    price: 'Mulai dari Rp 250 Juta',
-    rooms: '2 Kamar Tidur • 1 Kamar Mandi',
-    size: 'Luas Bangunan 36m²',
-    features: ['Ruang Tamu', 'Dapur', 'Teras', 'Taman Depan'],
+    id: 'tipe-36',
+    name: 'Tipe 36 (Emerald)',
+    tagline: 'Hunian Minimalis & Asri untuk Keluarga Muda',
+    priceDisplay: 'Rp 250 Juta-an',
+    estMonthly: '1,6 Jt/bulan',
+    image: '/images/tipe_36.png',
+    badge: 'Best Seller',
+    bedrooms: 2,
+    bathrooms: 1,
+    buildingArea: '36 m²',
+    landArea: '60 m²',
+    features: ['Ruang Tamu Minimalis', 'Dapur Clean Bar', 'Taman Depan Asri', 'Carport Wide'],
+    specs: {
+      foundation: 'Batu Kali & Beton Bertulang',
+      wall: 'Bata Merah / Hebel Diplester & Dicat',
+      roof: 'Rangka Baja Ringan & Genteng Beton',
+      sanitary: 'Kloset Duduk & Shower',
+      electricity: '1.300 Watt',
+      water: 'Air Bersih PDAM / Sumur Bor'
+    }
   },
   {
-    name: 'Tipe 45',
-    tagline: 'Lega untuk Keluarga Berkembang',
-    price: 'Mulai dari Rp 350 Juta',
-    rooms: '2 Kamar Tidur • 2 Kamar Mandi',
-    size: 'Luas Bangunan 45m²',
-    features: ['Ruang Keluarga', 'Dapur', 'Teras', 'Taman', 'Carport'],
+    id: 'tipe-45',
+    name: 'Tipe 45 (Sapphire)',
+    tagline: 'Ruang Lega & Nyaman untuk Keluarga Berkembang',
+    priceDisplay: 'Rp 350 Juta-an',
+    estMonthly: '2,2 Jt/bulan',
+    image: '/images/tipe_45.png',
+    badge: 'Paling Diminati',
+    bedrooms: 2,
+    bathrooms: 2,
+    buildingArea: '45 m²',
+    landArea: '72 m²',
+    features: ['Ruang Keluarga Luas', 'Dapur Terbuka Modern', 'Halaman Belakang', 'Carport Kanopi'],
+    specs: {
+      foundation: 'Beton Bertulang Cakar Ayam',
+      wall: 'Bata Merah Double Wall',
+      roof: 'Baja Ringan & Genteng Flat Metal',
+      sanitary: 'Kloset Duduk Toto & Hand Shower',
+      electricity: '2.200 Watt',
+      water: 'PDAM + Pompa Pendorong'
+    }
   },
   {
-    name: 'Tipe 60',
-    tagline: 'Hunian Premium untuk Kenyamanan Maksimal',
-    price: 'Mulai dari Rp 500 Juta',
-    rooms: '3 Kamar Tidur • 2 Kamar Mandi',
-    size: 'Luas Bangunan 60m²',
-    features: ['Ruang Keluarga', 'Dapur', 'Walk-in Closet', 'Taman', 'Carport', 'Gudang'],
+    id: 'tipe-60',
+    name: 'Tipe 60 2-Lantai (Diamond)',
+    tagline: 'Hunian Premium Eksklusif dengan Desain Mewah',
+    priceDisplay: 'Rp 520 Juta-an',
+    estMonthly: '3,4 Jt/bulan',
+    image: '/images/tipe_60.png',
+    badge: 'Premium Edition',
+    bedrooms: 3,
+    bathrooms: 2,
+    buildingArea: '60 m²',
+    landArea: '90 m²',
+    features: ['2 Lantai Luxury', 'Master Bedroom + Balkon', 'Living Room High Ceiling', 'Carport 2 Mobil'],
+    specs: {
+      foundation: 'Pancang & Beton Bertulang',
+      wall: 'Bata Merah Double Wall Plaster Rapi',
+      roof: 'Rangka Baja Ringan & Genteng Keramik',
+      sanitary: 'Sanitary Premium Set & Water Heater Ready',
+      electricity: '3.500 Watt Smart Meter',
+      water: 'PDAM + Ground Tank System'
+    }
   },
 ];
 ---
 
-<section id="property-types" class="py-16 md:py-20 bg-white">
+<section id="property-types" class="py-20 md:py-28 bg-slate-50 relative">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-bumi-navy-dark text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-        Temukan Tipe Rumah Sesuai Kebutuhan Anda
+    <!-- Header -->
+    <div class="reveal text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
+        Pilihan Tipe Unit
+      </div>
+      <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Temukan Tipe Rumah Sesuai Impian Keluarga
       </h2>
-      <p class="text-bumi-navy-light text-base sm:text-lg max-w-2xl mx-auto">
-        Tersedia berbagai tipe unit — dari hunian pertama untuk keluarga muda hingga rumah subsidi terjangkau. Semua dibangun dengan standar kualitas terbaik.
+      <p class="text-slate-700 text-base sm:text-lg font-medium leading-relaxed">
+        Setiap unit dibangun menggunakan material pilihan berstandar tinggi, didesain dengan sirkulasi udara optimal dan tata ruang efisien.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {properties.map((prop) => (
-        <div class="group bg-white border border-bumi-sage rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <!-- Placeholder floor plan area -->
-          <div class="h-48 bg-gradient-to-br from-bumi-off-white to-bumi-sage flex items-center justify-center relative">
-            <svg class="w-20 h-20 text-bumi-green-dark/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
-            <span class="absolute top-4 left-4 bg-bumi-green-dark text-white text-xs font-semibold px-3 py-1 rounded-full">{prop.name}</span>
-          </div>
-
-          <div class="p-6">
-            <h3 class="text-bumi-navy-dark text-xl font-bold mb-1">{prop.name}</h3>
-            <p class="text-bumi-navy-light text-sm mb-4">{prop.tagline}</p>
-
-            <div class="text-bumi-green-dark text-xl font-bold mb-3">{prop.price}</div>
-
-            <div class="text-sm text-bumi-navy-light mb-2">{prop.rooms}</div>
-            <div class="text-sm text-bumi-navy-light mb-4">{prop.size}</div>
-
-            <div class="flex flex-wrap gap-2 mb-5">
-              {prop.features.map((f) => (
-                <span class="text-xs bg-bumi-off-white text-bumi-navy-dark px-3 py-1 rounded-full">{f}</span>
-              ))}
+    <!-- Properties Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {properties.map((prop, idx) => (
+        <div class={`reveal reveal-delay-${idx + 1} hover-lift bg-white rounded-3xl overflow-hidden shadow-card border border-slate-200 flex flex-col h-full hover:shadow-2xl transition-all duration-300`}>
+          
+          <!-- Image Header -->
+          <div class="relative h-64 overflow-hidden bg-slate-100">
+            <img
+              src={prop.image}
+              alt={prop.name}
+              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-slate-950/40"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-4 left-4">
+              <span class="bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                {prop.badge}
+              </span>
             </div>
 
-            <a
-              href={whatsappLink(`Halo, saya tertarik dengan ${prop.name}. Boleh info lebih lanjut?`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block w-full text-center bg-bumi-green-dark text-white py-3 rounded-xl font-semibold hover:bg-bumi-green-medium transition-colors duration-200 min-h-[44px]"
-            >
-              Konsultasi {prop.name}
-            </a>
+            <!-- Price Tag on Image -->
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white">
+              <div>
+                <div class="text-[11px] text-slate-200 uppercase tracking-wider font-bold">Harga Mulai Dari</div>
+                <div class="text-2xl font-extrabold text-white">{prop.priceDisplay}</div>
+              </div>
+              <div class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold border border-slate-700">
+                Angsuran ~ {prop.estMonthly}
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Body -->
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+            <div>
+              <h3 class="text-slate-900 text-2xl font-extrabold mb-1">{prop.name}</h3>
+              <p class="text-slate-700 text-xs sm:text-sm font-semibold mb-6">{prop.tagline}</p>
+
+              <!-- Specs Grid Icons -->
+              <div class="grid grid-cols-2 gap-3 py-4 px-4 bg-slate-100 rounded-2xl mb-6 text-xs text-slate-900 font-bold border border-slate-200">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Bangunan: <strong class="text-slate-900">{prop.buildingArea}</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Tanah: <strong class="text-slate-900">{prop.landArea}</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>K. Tidur: <strong class="text-slate-900">{prop.bedrooms} Unit</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>K. Mandi: <strong class="text-slate-900">{prop.bathrooms} Unit</strong></span>
+                </div>
+              </div>
+
+              <!-- Feature Pills -->
+              <div class="flex flex-wrap gap-2 mb-2">
+                {prop.features.map((f) => (
+                  <span class="text-[11px] font-bold bg-emerald-50 text-emerald-900 px-3 py-1 rounded-full border border-emerald-200 inline-flex items-center gap-1">
+                    <svg class="w-3 h-3 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    {f}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-3 pt-2">
+              <a
+                href={whatsappLink(`Halo, saya tertarik dengan ${prop.name} (Harga ${prop.priceDisplay}). Boleh minta info pricelist & brosur detail?`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 px-4 rounded-xl font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all min-h-[48px]"
+              >
+                <span>Konsultasi {prop.name}</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+
+              <button
+                type="button"
+                data-spec-modal-target={prop.id}
+                class="spec-modal-btn w-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 py-2.5 px-4 rounded-xl text-xs font-bold transition-colors min-h-[40px] inline-flex items-center justify-center gap-2"
+              >
+                <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <span>Lihat Spesifikasi Bangunan</span>
+              </button>
+            </div>
+
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<!-- Modals for Building Specs -->
+{properties.map((prop) => (
+  <div
+    id={`modal-${prop.id}`}
+    class="spec-modal fixed inset-0 z-[2000] hidden bg-slate-950/80 p-4 overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 text-slate-900 animate-in fade-in zoom-in duration-300">
+        <button
+          type="button"
+          data-spec-modal-close={`modal-${prop.id}`}
+          class="spec-modal-close absolute top-6 right-6 text-slate-500 hover:text-slate-900 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-slate-100 font-bold hover:rotate-90 transition-transform duration-200"
+          aria-label="Tutup modal"
+        >
+          ✕
+        </button>
+
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-emerald-700 text-white text-xs font-bold px-3 py-1 rounded-full">{prop.badge}</span>
+          <h3 class="text-slate-900 text-xl font-bold">{prop.name}</h3>
+        </div>
+
+        <p class="text-sm font-semibold text-slate-600 mb-6">Spesifikasi Material & Bangunan Resmi Bumi Group</p>
+
+        <div class="space-y-3 text-sm divide-y divide-slate-200">
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Pondasi:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.foundation}</span>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Dinding:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.wall}</span>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Atap:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.roof}</span>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Sanitari:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.sanitary}</span>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Daya Listrik:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.electricity}</span>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <span class="font-bold text-slate-700">Sumber Air:</span>
+            <span class="text-slate-900 font-extrabold text-right">{prop.specs.water}</span>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-200 flex gap-3">
+          <a
+            href={whatsappLink(`Halo, saya mau pesan unit ${prop.name}. Mohon dibantu info berkas KPR & jadwal survey.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 bg-emerald-700 text-white text-center py-3 rounded-xl font-bold hover:bg-emerald-800 transition-colors"
+          >
+            Pesan Unit Ini
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
+<script>
+  const openBtns = document.querySelectorAll('.spec-modal-btn');
+  const closeBtns = document.querySelectorAll('.spec-modal-close');
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-spec-modal-target');
+      const modal = document.getElementById(`modal-${targetId}`);
+      modal?.classList.remove('hidden');
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modalId = btn.getAttribute('data-spec-modal-close');
+      const modal = document.getElementById(modalId || '');
+      modal?.classList.add('hidden');
+    });
+  });
+</script>

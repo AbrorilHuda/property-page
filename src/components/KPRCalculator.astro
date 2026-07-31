@@ -1,0 +1,245 @@
+---
+import { whatsappLink } from '../utils/config';
+---
+
+<section id="kpr-calculator" class="py-20 md:py-28 bg-slate-950 text-white relative overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Info Header -->
+      <div class="reveal lg:col-span-5 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs sm:text-sm font-bold uppercase tracking-wider">
+          Simulasi KPR Interaktif
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+          Hitung Estimasi Angsuran Rumah Impian
+        </h2>
+
+        <p class="text-slate-100 text-base sm:text-lg leading-relaxed font-medium">
+          Simulasikan cicilan per bulan sesuai dengan pilihan tipe unit, besaran uang muka (DP), dan pilihan masa tenor kredit KPR Anda.
+        </p>
+
+        <div class="space-y-4 pt-4 text-sm font-semibold">
+          <div class="flex items-center gap-3 bg-slate-900 p-4 rounded-2xl border border-slate-800 hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0 font-extrabold text-lg">
+              ✓
+            </div>
+            <div>
+              <div class="font-bold text-white">Bekerja Sama dengan Bank BUMN & Swasta</div>
+              <div class="text-xs text-slate-300 font-medium">KPR BTN, Bank Mandiri, BRI, BCA, BSI Syariah</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-slate-900 p-4 rounded-2xl border border-slate-800 hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0 font-extrabold text-lg">
+              ✓
+            </div>
+            <div>
+              <div class="font-bold text-white">Bantu Proses Berkas KPR Sampai ACC</div>
+              <div class="text-xs text-slate-300 font-medium">Tim marketing kami siap mendampingi pengajuan berkas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Calculator Card -->
+      <div class="reveal reveal-delay-2 lg:col-span-7">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 text-slate-900 shadow-2xl border border-slate-200 hover-lift">
+          
+          <div class="flex items-center justify-between border-b border-slate-200 pb-6 mb-6">
+            <div>
+              <h3 class="text-2xl font-extrabold text-slate-900">Kalkulator KPR</h3>
+              <p class="text-xs font-semibold text-slate-600">Estimasi Bunga Acuan KPR ~ 6,5% / tahun</p>
+            </div>
+            <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold px-3 py-1.5 rounded-full">
+              Instan & Transparan
+            </span>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Preset Property Type Selector -->
+            <div>
+              <label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
+                Pilih Tipe Rumah / Harga Unit
+              </label>
+              <div class="grid grid-cols-3 gap-3">
+                <button
+                  type="button"
+                  data-price="250000000"
+                  class="type-btn px-4 py-3 rounded-xl border-2 border-emerald-700 bg-emerald-50 text-slate-900 font-extrabold text-xs sm:text-sm text-center transition-all hover:scale-105"
+                >
+                  Tipe 36<br /><span class="text-xs text-slate-600 font-medium">250 Juta</span>
+                </button>
+                <button
+                  type="button"
+                  data-price="350000000"
+                  class="type-btn px-4 py-3 rounded-xl border border-slate-300 hover:border-emerald-700 font-extrabold text-xs sm:text-sm text-center transition-all hover:scale-105"
+                >
+                  Tipe 45<br /><span class="text-xs text-slate-600 font-medium">350 Juta</span>
+                </button>
+                <button
+                  type="button"
+                  data-price="520000000"
+                  class="type-btn px-4 py-3 rounded-xl border border-slate-300 hover:border-emerald-700 font-extrabold text-xs sm:text-sm text-center transition-all hover:scale-105"
+                >
+                  Tipe 60<br /><span class="text-xs text-slate-600 font-medium">520 Juta</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Down Payment Percentage -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                  Uang Muka / DP (%)
+                </label>
+                <span id="dp-val-display" class="text-sm font-extrabold text-emerald-800">DP 10% (Rp 25.000.000)</span>
+              </div>
+              <input
+                type="range"
+                id="dp-range"
+                min="0"
+                max="30"
+                step="5"
+                value="10"
+                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-700"
+              />
+              <div class="flex justify-between text-[11px] font-bold text-slate-600 mt-1">
+                <span>0% (Promo DP 0%)</span>
+                <span>10%</span>
+                <span>20%</span>
+                <span>30%</span>
+              </div>
+            </div>
+
+            <!-- Tenor Duration -->
+            <div>
+              <label class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
+                Jangka Waktu Kredit / Tenor
+              </label>
+              <div class="grid grid-cols-4 gap-3">
+                <button type="button" data-tenor="5" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-emerald-700 text-xs sm:text-sm font-bold text-center transition-all hover:scale-105">5 Thn</button>
+                <button type="button" data-tenor="10" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-emerald-700 text-xs sm:text-sm font-bold text-center transition-all hover:scale-105">10 Thn</button>
+                <button type="button" data-tenor="15" class="tenor-btn px-3 py-2.5 rounded-xl border-2 border-emerald-700 bg-emerald-50 text-xs sm:text-sm font-bold text-center transition-all hover:scale-105">15 Thn</button>
+                <button type="button" data-tenor="20" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-emerald-700 text-xs sm:text-sm font-bold text-center transition-all hover:scale-105">20 Thn</button>
+              </div>
+            </div>
+
+            <!-- Calculation Output Box (High Contrast Dark Slate Container) -->
+            <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-4 shadow-lg border border-slate-800">
+              <div class="flex justify-between items-center text-xs text-slate-300 border-b border-slate-800 pb-3 font-semibold">
+                <span>Plafon Pinjaman KPR:</span>
+                <span id="loan-amount" class="font-extrabold text-white text-sm">Rp 225.000.000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div>
+                  <div class="text-xs text-slate-200 uppercase font-bold">Estimasi Cicilan per Bulan</div>
+                  <div class="text-xs text-emerald-400 font-semibold">*Sudah termasuk perkiraan bunga KPR</div>
+                </div>
+                <div id="monthly-installment" class="text-2xl sm:text-3xl font-extrabold text-emerald-400">
+                  Rp 1.961.000
+                </div>
+              </div>
+            </div>
+
+            <!-- Consultation Trigger -->
+            <a
+              id="kpr-wa-btn"
+              href={whatsappLink('Halo, saya sudah menghitung simulasi KPR untuk rumah seharga Rp 250 Juta dengan DP 10% dan Tenor 15 thn (Estimasi ~ Rp 1.961.000/bln). Mohon info kelayakan & syarat berkas.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2.5 w-full bg-emerald-700 hover:bg-emerald-800 text-white py-4 rounded-xl font-extrabold shadow-md hover:scale-[1.01] active:scale-95 transition-all min-h-[50px]"
+            >
+              <span>Konsultasi Pengajuan KPR via WhatsApp</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  let selectedPrice = 250000000;
+  let selectedDpPercent = 10;
+  let selectedTenorYears = 15;
+  const annualInterestRate = 0.065;
+
+  const typeBtns = document.querySelectorAll('.type-btn');
+  const tenorBtns = document.querySelectorAll('.tenor-btn');
+  const dpRange = document.getElementById('dp-range') as HTMLInputElement;
+  const dpDisplay = document.getElementById('dp-val-display');
+  const loanAmountEl = document.getElementById('loan-amount');
+  const monthlyEl = document.getElementById('monthly-installment');
+  const waBtn = document.getElementById('kpr-wa-btn') as HTMLAnchorElement;
+
+  function calculateKpr() {
+    const dpAmount = selectedPrice * (selectedDpPercent / 100);
+    const loanAmount = selectedPrice - dpAmount;
+    
+    const r = annualInterestRate / 12;
+    const n = selectedTenorYears * 12;
+
+    let monthly = 0;
+    if (loanAmount > 0) {
+      monthly = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    }
+
+    const fmtMoney = (num: number) => 'Rp ' + Math.round(num).toLocaleString('id-ID');
+
+    if (dpDisplay) {
+      dpDisplay.textContent = `DP ${selectedDpPercent}% (${fmtMoney(dpAmount)})`;
+    }
+    if (loanAmountEl) {
+      loanAmountEl.textContent = fmtMoney(loanAmount);
+    }
+    if (monthlyEl) {
+      monthlyEl.textContent = fmtMoney(monthly) + ' /bln';
+    }
+
+    if (waBtn) {
+      const msg = `Halo, saya telah menghitung simulasi KPR perumahan Bumi Group:\n- Harga Unit: ${fmtMoney(selectedPrice)}\n- DP (${selectedDpPercent}%): ${fmtMoney(dpAmount)}\n- Tenor: ${selectedTenorYears} Tahun\n- Estimasi Angsuran: ${fmtMoney(monthly)}/bulan.\n\nBoleh minta panduan berkas & jadwal survey lokasi?`;
+      const encoded = encodeURIComponent(msg);
+      waBtn.href = `https://wa.me/62812345678?text=${encoded}`;
+    }
+  }
+
+  typeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      typeBtns.forEach(b => {
+        b.classList.remove('border-2', 'border-emerald-700', 'bg-emerald-50');
+        b.classList.add('border', 'border-slate-300');
+      });
+      btn.classList.remove('border-slate-300');
+      btn.classList.add('border-2', 'border-emerald-700', 'bg-emerald-50');
+      
+      selectedPrice = parseFloat(btn.getAttribute('data-price') || '250000000');
+      calculateKpr();
+    });
+  });
+
+  tenorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tenorBtns.forEach(b => {
+        b.classList.remove('border-2', 'border-emerald-700', 'bg-emerald-50');
+        b.classList.add('border', 'border-slate-300');
+      });
+      btn.classList.remove('border-slate-300');
+      btn.classList.add('border-2', 'border-emerald-700', 'bg-emerald-50');
+      
+      selectedTenorYears = parseInt(btn.getAttribute('data-tenor') || '15');
+      calculateKpr();
+    });
+  });
+
+  dpRange?.addEventListener('input', (e) => {
+    selectedDpPercent = parseInt((e.target as HTMLInputElement).value || '10');
+    calculateKpr();
+  });
+
+  calculateKpr();
+</script>

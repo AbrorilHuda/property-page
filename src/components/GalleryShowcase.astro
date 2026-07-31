@@ -1,0 +1,196 @@
+---
+const galleryItems = [
+  {
+    title: 'Fasad Minimalis Tipe 36',
+    category: 'eksterior',
+    image: '/images/tipe_36.png',
+    desc: 'Desain tampak depan modern dengan carport luas & taman asri.'
+  },
+  {
+    title: 'Ruang Tamu & Utilitas Modern',
+    category: 'interior',
+    image: '/images/living_room.png',
+    desc: 'Interior hangat dengan pencahayaan alami optimal.'
+  },
+  {
+    title: 'Cluster Tipe 45 Tropical',
+    category: 'eksterior',
+    image: '/images/tipe_45.png',
+    desc: 'Model 1.5 lantai dengan aksen kayu sintetis modern.'
+  },
+  {
+    title: 'Gerbang Utama & Keamanan 24 Jam',
+    category: 'fasilitas',
+    image: '/images/facility_gate.png',
+    desc: 'One Gate System dengan pos sekuriti & CCTV terpadu.'
+  },
+  {
+    title: 'Tipe 60 Premium 2-Lantai',
+    category: 'eksterior',
+    image: '/images/tipe_60.png',
+    desc: 'Hunian mewah 2 lantai dengan balkon & kaca lebar.'
+  },
+  {
+    title: 'Kawasan Perumahan Asri',
+    category: 'fasilitas',
+    image: '/images/hero_house.png',
+    desc: 'Lingkungan hijau bebas banjir untuk kenyamanan keluarga.'
+  },
+];
+---
+
+<section id="gallery" class="py-20 md:py-28 bg-white relative">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+    
+    <!-- Section Header -->
+    <div class="reveal text-center max-w-3xl mx-auto mb-12 space-y-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
+        Galeri Perumahan
+      </div>
+      <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Intip Suasana & Visual Hunian Bumi Group
+      </h2>
+      <p class="text-slate-700 text-base sm:text-lg font-medium">
+        Lihat langsung keindahan arsitektur eksterior, penataan interior, serta lingkungan kawasan yang siap Anda huni.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="reveal reveal-delay-1 flex flex-wrap justify-center gap-3 mb-12">
+      <button
+        type="button"
+        data-filter="all"
+        class="filter-btn active px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-slate-900 text-white shadow-md border border-slate-900 hover:scale-105 transition-all"
+      >
+        Semua Foto
+      </button>
+      <button
+        type="button"
+        data-filter="eksterior"
+        class="filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 hover:scale-105 transition-all"
+      >
+        Eksterior Rumah
+      </button>
+      <button
+        type="button"
+        data-filter="interior"
+        class="filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 hover:scale-105 transition-all"
+      >
+        Interior Hunian
+      </button>
+      <button
+        type="button"
+        data-filter="fasilitas"
+        class="filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200 hover:scale-105 transition-all"
+      >
+        Fasilitas Kawasan
+      </button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {galleryItems.map((item, idx) => (
+        <div
+          data-category={item.category}
+          class={`reveal reveal-delay-${(idx % 3) + 1} hover-lift gallery-item group relative bg-slate-900 rounded-3xl overflow-hidden shadow-card border border-slate-200 cursor-pointer`}
+          data-index={idx}
+        >
+          <div class="relative h-72 overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.title}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-slate-950/70"></div>
+          </div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-slate-900/90 border-t border-slate-800">
+            <span class="inline-block bg-emerald-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full mb-2">
+              {item.category}
+            </span>
+            <h3 class="text-lg font-extrabold text-white mb-1 group-hover:text-emerald-400 transition-colors">{item.title}</h3>
+            <p class="text-xs text-slate-200 font-semibold">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div
+  id="gallery-lightbox"
+  class="fixed inset-0 z-[3000] hidden bg-slate-950/90 flex items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+>
+  <button
+    id="lightbox-close"
+    class="absolute top-6 right-6 text-white hover:text-emerald-400 text-2xl font-bold p-3 min-w-[44px] min-h-[44px] flex items-center justify-center bg-slate-800 rounded-full hover:rotate-90 transition-transform duration-200"
+    aria-label="Tutup foto"
+  >
+    ✕
+  </button>
+  <div class="max-w-4xl w-full text-center space-y-4">
+    <img id="lightbox-img" src="" alt="" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl object-contain border border-slate-700 animate-in fade-in zoom-in duration-300" />
+    <h3 id="lightbox-title" class="text-white text-xl font-extrabold"></h3>
+    <p id="lightbox-desc" class="text-slate-200 text-sm max-w-lg mx-auto font-medium"></p>
+  </div>
+</div>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('gallery-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white');
+        b.classList.add('bg-slate-100', 'text-slate-800');
+      });
+      btn.classList.remove('bg-slate-100', 'text-slate-800');
+      btn.classList.add('bg-slate-900', 'text-white');
+
+      const filter = btn.getAttribute('data-filter');
+      galleryItems.forEach(item => {
+        const cat = item.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          (item as HTMLElement).style.display = 'block';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const title = item.querySelector('h3');
+      const desc = item.querySelector('p');
+
+      if (lightboxImg && img) lightboxImg.src = img.src;
+      if (lightboxTitle && title) lightboxTitle.textContent = title.textContent;
+      if (lightboxDesc && desc) lightboxDesc.textContent = desc.textContent;
+
+      lightbox?.classList.remove('hidden');
+    });
+  });
+
+  lightboxClose?.addEventListener('click', () => {
+    lightbox?.classList.add('hidden');
+  });
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+    }
+  });
+</script>

@@ -1,54 +1,84 @@
 ---
 const facilities = [
   {
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`,
-    label: 'Keamanan 24 Jam',
-    description: 'Petugas keamanan siaga 24 jam untuk ketenangan keluarga.',
+    title: 'One Gate System 24/7',
+    desc: 'Sistem akses pintu gerbang tunggal dengan penjagaan sekuriti 24 jam & kamera CCTV terpadu.',
+    tag: 'Keamanan Maksimal',
+    iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
   },
   {
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>`,
-    label: 'Jalan Lebar',
-    description: 'Akses jalan lingkungan yang lebar dan nyaman.',
+    title: 'Taman & Play Area Hijau',
+    desc: 'Ruang terbuka hijau segar, sarana bermain anak, dan jogging track nyaman untuk keluarga.',
+    tag: 'Lingkungan Asri',
+    iconPath: 'M5 20h14M12 4v16m-5-8l5-5 5 5m-7-6l7-7 7 7'
   },
   {
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
-    label: 'Taman & Ruang Hijau',
-    description: 'Taman bermain dan area terbuka hijau untuk keluarga.',
+    title: 'Akses Jalan Lebar Row 8-10m',
+    desc: 'Jalan perumahan beraspal mulus & lebar, memudahkan papasan 2 mobil dengan aman.',
+    tag: 'Infrastruktur Prima',
+    iconPath: 'M9 20l-1-7 3-1 2 8M15 20l1-7-3-1-2 8M3 4h18M3 8h18'
   },
   {
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
-    label: 'Dekat Fasilitas Umum',
-    description: 'Dekat sekolah, rumah sakit, dan pusat perbelanjaan.',
+    title: 'Sistem Drainase Bebas Banjir',
+    desc: 'Desain saluran air tertutup modern yang terintegrasi, menjamin lokasi bebas genangan.',
+    tag: 'Bebas Banjir 100%',
+    iconPath: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z'
   },
   {
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`,
-    label: 'Drainase Baik',
-    description: 'Sistem drainase terencana, bebas banjir.',
+    title: 'Sarana Ibadah / Masjid Cluster',
+    desc: 'Masjid perumahan bersih & nyaman untuk tempat ibadah dan silaturahmi warga.',
+    tag: 'Fasilitas Umum',
+    iconPath: 'M19 21V10l-7-5-7 5v11m14 0H5m14 0h2M5 21H3m6-10a3 3 0 116 0M9 21v-4a2 2 0 012-2h2a2 2 0 012 2v4'
+  },
+  {
+    title: 'Lokasi Strategis Dekat Tol & Faskes',
+    desc: 'Hanya 10 menit ke Pintu Tol, Rumah Sakit Utama, Sekolah Unggulan, dan Pusat Perbelanjaan.',
+    tag: 'Aksesibilitas Cepat',
+    iconPath: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z'
   },
 ];
 ---
 
-<section id="facilities" class="py-16 md:py-20 bg-bumi-off-white">
+<section id="facilities" class="py-20 md:py-28 bg-slate-50 relative">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-bumi-navy-dark text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-        Fasilitas Lengkap untuk Hidup yang Lebih Baik
+    
+    <!-- Header -->
+    <div class="reveal text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Fasilitas Lengkap untuk Kenyamanan Hidup Sehari-hari
       </h2>
-      <p class="text-bumi-navy-light text-base sm:text-lg">
-        Kami menyediakan fasilitas terbaik untuk kenyamanan dan keamanan Anda.
+      <p class="text-slate-700 text-base sm:text-lg font-medium max-w-2xl mx-auto">
+        Nikmati berbagai sarana penunjang kualitas hidup di lingkungan yang aman, asri, dan ramah anak.
       </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-      {facilities.map((item) => (
-        <div class="bg-white rounded-2xl p-5 md:p-6 text-center hover:shadow-md transition-shadow duration-200">
-          <div class="inline-flex items-center justify-center w-14 h-14 bg-bumi-green-light/15 rounded-xl text-bumi-green-dark mb-4">
-            <Fragment set:html={item.icon} />
+    <!-- Facilities Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {facilities.map((fac, idx) => (
+        <div class={`reveal reveal-delay-${(idx % 3) + 1} hover-lift bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-slate-200 flex flex-col justify-between space-y-4 hover:border-emerald-500 hover:shadow-xl transition-all`}>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shadow-sm">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={fac.iconPath} />
+                </svg>
+              </div>
+              <span class="text-[11px] font-extrabold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">
+                {fac.tag}
+              </span>
+            </div>
+
+            <h3 class="text-slate-900 text-xl font-extrabold mb-2">{fac.title}</h3>
+            <p class="text-slate-700 text-sm leading-relaxed font-semibold">{fac.desc}</p>
           </div>
-          <h3 class="text-bumi-navy-dark text-sm font-bold mb-2">{item.label}</h3>
-          <p class="text-bumi-navy-light text-xs leading-relaxed">{item.description}</p>
+
+          <div class="pt-4 border-t border-slate-100 text-xs font-bold text-emerald-700 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Standar Perumahan Premium</span>
+          </div>
         </div>
       ))}
     </div>
+
   </div>
 </section>

@@ -1,57 +1,74 @@
 ---
+import { whatsappLink } from '../utils/config';
 ---
 
-<section id="about" class="py-16 md:py-20 bg-bumi-off-white">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
-    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-      <div>
-        <h2 class="text-bumi-navy-dark text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-tight">
-          Bumi Group, Developer Terpercaya untuk Hunian Impian Anda
+<section id="about" class="py-20 md:py-28 bg-slate-900 text-white relative overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Visual Image -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800">
+          <img
+            src="/images/living_room.png"
+            alt="Profil Perumahan Bumi Group"
+            class="w-full h-[380px] sm:h-[450px] object-cover"
+          />
+          
+          <div class="p-6 bg-slate-800 border-t border-slate-700">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider mb-1">Visi Developer</div>
+            <div class="text-sm sm:text-base font-semibold text-white">
+              "Menghadirkan hunian berkualitas tinggi yang terjangkau, aman, dan menjadi warisan investasi keluarga."
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Badge -->
+        <div class="absolute -top-4 -right-4 hidden sm:flex items-center gap-3 bg-white text-slate-900 p-4 rounded-2xl shadow-2xl border border-slate-200">
+          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center text-xl font-bold">
+            10+
+          </div>
+          <div>
+            <div class="text-sm font-extrabold text-slate-900">Tahun Pengalaman</div>
+            <div class="text-xs text-slate-600 font-semibold">Membangun Hunian Impian</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Description (No repetitive eyebrow) -->
+      <div class="lg:col-span-6 space-y-6">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+          Developer Terpercaya untuk Hunian Impian Keluarga
         </h2>
 
-        <div class="space-y-4 text-bumi-navy-light text-base leading-relaxed">
-          <p>
-            Bumi Group hadir sebagai mitra terpercaya dalam mewujudkan hunian idaman. Dengan pengalaman membangun perumahan berkualitas, kami berkomitmen menghadirkan rumah yang bukan hanya nyaman ditinggali, tapi juga menguntungkan sebagai investasi jangka panjang.
-          </p>
-          <p>
-            Kami memahami bahwa rumah bukan sekadar tempat tinggal, tetapi tempat di mana kenangan keluarga tercipta. Oleh karena itu, setiap unit yang kami bangun dirancang dengan standar kualitas terbaik, material pilihan, dan desain yang memperhatikan kenyamanan serta kebutuhan penghuni.
-          </p>
-          <p>
-            Dengan tim profesional yang berpengalaman dan dedikasi tinggi, Bumi Group terus berupaya menghadirkan hunian yang aman, nyaman, dan sesuai dengan harapan Anda.
-          </p>
+        <p class="text-slate-100 text-base sm:text-lg leading-relaxed font-medium">
+          <strong class="text-white">Bumi Group</strong> hadir sebagai mitra terpercaya dalam mewujudkan impian kepemilikan rumah. Dengan standar konstruksi ketat, pilihan material bermutu tinggi, dan legalitas yang 100% aman, kami berkomitmen menghadirkan rumah yang bukan hanya nyaman ditinggali, namun juga terus berkembang nilainya sebagai investasi jangka panjang.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+            <div class="text-2xl font-extrabold text-emerald-400 mb-1">500+</div>
+            <div class="text-xs font-semibold text-slate-200">Unit Rumah Terbangun</div>
+          </div>
+          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+            <div class="text-2xl font-extrabold text-emerald-400 mb-1">99%</div>
+            <div class="text-xs font-semibold text-slate-200">Tingkat Kepuasan Pembeli</div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <a
+            href={whatsappLink('Halo Bumi Group, saya ingin berkonsultasi mengenai latar belakang & portofolio perumahan.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-7 py-3.5 rounded-xl font-bold shadow-lg transition-all min-h-[48px]"
+          >
+            <span>Hubungi Tim Marketing</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
         </div>
       </div>
 
-      <div class="relative">
-        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-          <div class="flex items-center gap-4 mb-6">
-            <svg class="w-14 h-14 flex-shrink-0" viewBox="0 0 60 60" fill="none">
-              <rect width="60" height="60" rx="14" fill="#4E8B3E"/>
-              <path d="M18 42 L30 14 L42 42 Z" fill="white" opacity="0.9"/>
-              <circle cx="30" cy="33" r="4" fill="#8BC34A"/>
-            </svg>
-            <div>
-              <div class="text-bumi-navy-dark font-bold text-xl">Bumi Group</div>
-              <div class="text-bumi-navy-light text-sm">Developer Perumahan Terpercaya</div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-3 gap-4 text-center">
-            <div class="bg-bumi-off-white rounded-xl p-4">
-              <div class="text-bumi-green-dark text-2xl font-bold">10+</div>
-              <div class="text-bumi-navy-light text-xs mt-1">Tahun Pengalaman</div>
-            </div>
-            <div class="bg-bumi-off-white rounded-xl p-4">
-              <div class="text-bumi-green-dark text-2xl font-bold">500+</div>
-              <div class="text-bumi-navy-light text-xs mt-1">Unit Terjual</div>
-            </div>
-            <div class="bg-bumi-off-white rounded-xl p-4">
-              <div class="text-bumi-green-dark text-2xl font-bold">98%</div>
-              <div class="text-bumi-navy-light text-xs mt-1">Kepuasan</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

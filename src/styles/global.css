@@ -1,13 +1,14 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
   --color-bumi-green-light: #8BC34A;
   --color-bumi-green-medium: #6BA84F;
   --color-bumi-green-dark: #4E8B3E;
-  --color-bumi-navy-dark: #2B3245;
-  --color-bumi-navy-light: #3D4560;
-  --color-bumi-off-white: #F7F9F5;
-  --color-bumi-sage: #E8EDE3;
+  --color-bumi-navy-dark: #1E2536;
+  --color-bumi-navy-light: #2D3748;
+  --color-bumi-off-white: #F8FAFC;
+  --color-bumi-sage: #E2E8F0;
 }
 
 @layer base {
@@ -22,8 +23,8 @@
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: var(--color-bumi-navy-dark);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #0F172A;
     background-color: #FFFFFF;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -35,25 +36,27 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.25;
     font-weight: 700;
     letter-spacing: -0.02em;
+    color: #0F172A;
   }
 
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.85rem; }
+  h3 { font-size: 1.4rem; }
 
   @media (min-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.375rem; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.35rem; }
+    h3 { font-size: 1.6rem; }
   }
 
   @media (min-width: 1024px) {
-    h1 { font-size: 2.25rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.5rem; }
+    h1 { font-size: 3.75rem; }
+    h2 { font-size: 2.65rem; }
+    h3 { font-size: 1.85rem; }
   }
 
   a {
@@ -71,6 +74,65 @@
   :focus-visible {
     outline: 2px solid var(--color-bumi-green-dark);
     outline-offset: 2px;
+  }
+}
+
+/* High contrast custom utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #4E8B3E 0%, #7CB342 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow {
+  box-shadow: 0 8px 24px -6px rgba(78, 139, 62, 0.4);
+}
+
+.shadow-card {
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Scroll-Reveal & Fluid Motion Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Interactive Hover Physics */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+}
+
+.hover-lift:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hover-lift:hover {
+    transform: none !important;
   }
 }
 
