@@ -1,14 +1,18 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-:root {
-  --color-bumi-green-light: #8BC34A;
-  --color-bumi-green-medium: #6BA84F;
-  --color-bumi-green-dark: #4E8B3E;
-  --color-bumi-navy-dark: #1E2536;
-  --color-bumi-navy-light: #2D3748;
-  --color-bumi-off-white: #F8FAFC;
-  --color-bumi-sage: #E2E8F0;
+/* Token warna brand Bumi Group — dipetakan ke utilitas Tailwind (bg-brand-*, text-brand-*, dst.) */
+@theme {
+  --color-brand-50: #F4F9EC;
+  --color-brand-100: #E4F0D3;
+  --color-brand-200: #C9E2A9;
+  --color-brand-300: #A8D17D;
+  --color-brand-400: #8BC34A;
+  --color-brand-500: #6BA84F;
+  --color-brand-600: #5A9741;
+  --color-brand-700: #4E8B3E;
+  --color-brand-800: #427635;
+  --color-brand-900: #37612C;
+  --color-brand-950: #1B300F;
 }
 
 @layer base {
@@ -17,8 +21,14 @@
   }
 
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+  }
+
+  /* Scroll halus hanya bagi pengguna yang nyaman dengan gerakan */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -72,35 +82,23 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-bumi-green-dark);
+    outline: 2px solid var(--color-brand-700);
     outline-offset: 2px;
   }
-}
-
-/* High contrast custom utilities */
-.text-gradient {
-  background: linear-gradient(135deg, #4E8B3E 0%, #7CB342 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.shadow-glow {
-  box-shadow: 0 8px 24px -6px rgba(78, 139, 62, 0.4);
 }
 
 .shadow-card {
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
-/* Scroll-Reveal & Fluid Motion Animations */
-.reveal {
+/* Scroll-Reveal: hanya aktif bila JS berjalan (progressive enhancement — tanpa JS konten tetap terlihat) */
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
-.reveal.active {
+.js .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -126,13 +124,18 @@
 
 /* Reduced Motion Safety */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js .reveal {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
   .hover-lift:hover {
     transform: none !important;
+  }
+  /* Titik "online" berkedip abadi dihentikan bagi pengguna sensitif gerakan */
+  .animate-ping {
+    animation: none !important;
+    opacity: 0.6;
   }
 }
 

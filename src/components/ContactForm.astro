@@ -1,5 +1,5 @@
 ---
-// ContactForm will be a client-side component for interactivity
+// ContactForm: validasi klien + penyerahan ke WhatsApp
 ---
 
 <section id="contact-form" class="py-20 md:py-28 bg-slate-50 border-t border-slate-200">
@@ -13,19 +13,21 @@
       </p>
     </div>
 
-    <form id="contact-form-element" class="reveal reveal-delay-1 bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200 text-slate-900">
+    <form id="contact-form-element" class="reveal reveal-delay-1 bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200 text-slate-900" novalidate>
       <div class="space-y-6">
         <!-- Nama Lengkap -->
         <div>
           <label for="namaLengkap" class="block text-slate-900 text-sm font-bold mb-2">
-            Nama Lengkap <span class="text-red-600">*</span>
+            Nama Lengkap <span class="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             type="text"
             id="namaLengkap"
             name="namaLengkap"
             required
-            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-emerald-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-400"
+            autocomplete="name"
+            aria-describedby="error-namaLengkap"
+            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
             placeholder="Masukkan nama lengkap Anda"
           />
           <p id="error-namaLengkap" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
@@ -34,14 +36,16 @@
         <!-- Email -->
         <div>
           <label for="email" class="block text-slate-900 text-sm font-bold mb-2">
-            Email <span class="text-red-600">*</span>
+            Email <span class="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-emerald-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-400"
+            autocomplete="email"
+            aria-describedby="error-email"
+            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
             placeholder="nama@email.com"
           />
           <p id="error-email" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
@@ -50,14 +54,17 @@
         <!-- Nomor WhatsApp -->
         <div>
           <label for="nomorWhatsApp" class="block text-slate-900 text-sm font-bold mb-2">
-            Nomor WhatsApp <span class="text-red-600">*</span>
+            Nomor WhatsApp <span class="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             type="tel"
             id="nomorWhatsApp"
             name="nomorWhatsApp"
             required
-            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-emerald-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-400"
+            autocomplete="tel"
+            inputmode="tel"
+            aria-describedby="error-nomorWhatsApp"
+            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
             placeholder="Contoh: 08123456789"
           />
           <p id="error-nomorWhatsApp" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
@@ -72,7 +79,7 @@
             id="pesanSingkat"
             name="pesanSingkat"
             rows="4"
-            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-emerald-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-400 resize-none"
+            class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500 resize-none"
             placeholder="Tulis pertanyaan atau jadwal survey yang diinginkan..."
           ></textarea>
         </div>
@@ -80,31 +87,31 @@
         <!-- Submit Button -->
         <button
           type="submit"
-          class="w-full bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-4 rounded-xl font-extrabold shadow-md hover:scale-[1.01] active:scale-95 transition-all duration-200 min-h-[50px] disabled:opacity-50 disabled:cursor-not-allowed"
+          class="w-full bg-brand-700 hover:bg-brand-800 text-white px-6 py-4 rounded-xl font-extrabold shadow-md active:scale-[0.99] transition-all duration-200 min-h-[50px] disabled:opacity-50 disabled:cursor-not-allowed"
           id="submit-btn"
         >
           Kirim & Hubungi via WhatsApp
         </button>
       </div>
 
-      <!-- Success Message -->
-      <div id="success-message" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-300 rounded-xl animate-in fade-in duration-300">
+      <!-- Success Message dengan tautan manual (tahan terhadap popup blocker) -->
+      <div id="success-message" class="hidden mt-6 p-4 bg-brand-50 border border-brand-300 rounded-xl">
         <div class="flex items-start gap-3">
-          <span class="text-emerald-700 font-bold text-xl">✓</span>
+          <span class="text-brand-700 font-bold text-xl" aria-hidden="true">✓</span>
           <div>
-            <p class="text-emerald-900 font-extrabold">Formulir Terkirim!</p>
-            <p class="text-emerald-800 text-sm mt-1 font-semibold">Anda sedang dialihkan ke WhatsApp marketing kami...</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Error Message -->
-      <div id="error-message" class="hidden mt-6 p-4 bg-red-50 border border-red-300 rounded-xl animate-in fade-in duration-300">
-        <div class="flex items-start gap-3">
-          <span class="text-red-600 font-bold text-xl">✕</span>
-          <div>
-            <p class="text-red-900 font-extrabold">Terjadi Kesalahan</p>
-            <p class="text-red-800 text-sm mt-1 font-semibold">Silakan periksa kembali data Anda atau hubungi WhatsApp langsung.</p>
+            <p class="text-brand-900 font-extrabold">Data Anda Siap Dikirim!</p>
+            <p class="text-brand-800 text-sm mt-1 font-semibold">
+              WhatsApp akan terbuka otomatis. Jika tidak terbuka, tekan tombol di bawah ini.
+            </p>
+            <a
+              id="success-wa-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800 text-white text-sm font-bold px-5 py-3 rounded-xl min-h-11 transition-colors"
+            >
+              Buka WhatsApp Sekarang
+            </a>
           </div>
         </div>
       </div>
@@ -119,7 +126,7 @@
   const form = document.getElementById('contact-form-element') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const successMessage = document.getElementById('success-message');
-  const errorMessage = document.getElementById('error-message');
+  const successWaLink = document.getElementById('success-wa-link') as HTMLAnchorElement;
 
   const namaLengkapInput = document.getElementById('namaLengkap') as HTMLInputElement;
   const emailInput = document.getElementById('email') as HTMLInputElement;
@@ -144,114 +151,87 @@
     }
   }
 
-  function validateForm() {
-    let isValid = true;
+  function setFieldState(
+    input: HTMLInputElement,
+    errorEl: HTMLElement | null,
+    message: string | null
+  ) {
+    if (message) {
+      showError(errorEl, message);
+      input.classList.add('border-red-500');
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      hideError(errorEl);
+      input.classList.remove('border-red-500');
+      input.removeAttribute('aria-invalid');
+    }
+  }
 
+  function validateForm() {
     hideError(errorNama);
     hideError(errorEmail);
     hideError(errorWhatsApp);
 
+    let firstInvalid: HTMLInputElement | null = null;
+
     const nameError = validateName(namaLengkapInput.value);
-    if (nameError) {
-      showError(errorNama, nameError);
-      namaLengkapInput.classList.add('border-red-500');
-      isValid = false;
-    } else {
-      namaLengkapInput.classList.remove('border-red-500');
-    }
+    setFieldState(namaLengkapInput, errorNama, nameError);
+    if (nameError) firstInvalid ??= namaLengkapInput;
 
     const emailError = validateEmail(emailInput.value);
-    if (emailError) {
-      showError(errorEmail, emailError);
-      emailInput.classList.add('border-red-500');
-      isValid = false;
-    } else {
-      emailInput.classList.remove('border-red-500');
-    }
+    setFieldState(emailInput, errorEmail, emailError);
+    if (emailError) firstInvalid ??= emailInput;
 
     const whatsappError = validateWhatsApp(nomorWhatsAppInput.value);
-    if (whatsappError) {
-      showError(errorWhatsApp, whatsappError);
-      nomorWhatsAppInput.classList.add('border-red-500');
-      isValid = false;
-    } else {
-      nomorWhatsAppInput.classList.remove('border-red-500');
-    }
+    setFieldState(nomorWhatsAppInput, errorWhatsApp, whatsappError);
+    if (whatsappError) firstInvalid ??= nomorWhatsAppInput;
 
-    return isValid;
+    firstInvalid?.focus();
+    return !firstInvalid;
   }
 
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
 
     successMessage?.classList.add('hidden');
-    errorMessage?.classList.add('hidden');
 
     if (!validateForm()) {
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Mengirim...';
+    submitBtn.textContent = 'Membuka WhatsApp...';
 
-    const formData = {
-      namaLengkap: namaLengkapInput.value.trim(),
-      email: emailInput.value.trim(),
-      nomorWhatsApp: nomorWhatsAppInput.value.trim(),
-      pesanSingkat: pesanSingkatInput.value.trim(),
-    };
+    const namaLengkap = namaLengkapInput.value.trim();
+    const email = emailInput.value.trim();
+    const nomorWhatsApp = nomorWhatsAppInput.value.trim();
+    const pesanSingkat = pesanSingkatInput.value.trim();
 
-    try {
-      await new Promise(resolve => setTimeout(resolve, 800));
+    const message = `Halo Bumi Group, saya ${namaLengkap} ingin survey lokasi perumahan.\n\nEmail: ${email}\nNo. WA: ${nomorWhatsApp}\nPesan/Pertanyaan: ${pesanSingkat || 'Mohon jadwalkan survey lokasi.'}`;
+    const waUrl = whatsappLink(message);
 
-      const message = `Halo Bumi Group, saya ${formData.namaLengkap} ingin survey lokasi perumahan.\n\nEmail: ${formData.email}\nNo. WA: ${formData.nomorWhatsApp}\nPesan/Pertanyaan: ${formData.pesanSingkat || 'Mohon jadwalkan survey lokasi.'}`;
-      
-      successMessage?.classList.remove('hidden');
-      form.reset();
+    // Tautan manual selalu tersedia — kebal popup blocker.
+    if (successWaLink) successWaLink.href = waUrl;
+    successMessage?.classList.remove('hidden');
 
-      setTimeout(() => {
-        window.open(whatsappLink(message), '_blank');
-      }, 1500);
+    window.open(waUrl, '_blank', 'noopener');
 
-    } catch (error) {
-      console.error('Form submission error:', error);
-      errorMessage?.classList.remove('hidden');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Kirim & Hubungi via WhatsApp';
-    }
+    form.reset();
+    [namaLengkapInput, emailInput, nomorWhatsAppInput].forEach(i => i.classList.remove('border-red-500'));
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Kirim & Hubungi via WhatsApp';
   });
 
   namaLengkapInput?.addEventListener('blur', () => {
-    const error = validateName(namaLengkapInput.value);
-    if (error) {
-      showError(errorNama, error);
-      namaLengkapInput.classList.add('border-red-500');
-    } else {
-      hideError(errorNama);
-      namaLengkapInput.classList.remove('border-red-500');
-    }
+    setFieldState(namaLengkapInput, errorNama, validateName(namaLengkapInput.value));
   });
 
   emailInput?.addEventListener('blur', () => {
-    const error = validateEmail(emailInput.value);
-    if (error) {
-      showError(errorEmail, error);
-      emailInput.classList.add('border-red-500');
-    } else {
-      hideError(errorEmail);
-      emailInput.classList.remove('border-red-500');
-    }
+    setFieldState(emailInput, errorEmail, validateEmail(emailInput.value));
   });
 
   nomorWhatsAppInput?.addEventListener('blur', () => {
-    const error = validateWhatsApp(nomorWhatsAppInput.value);
-    if (error) {
-      showError(errorWhatsApp, error);
-      nomorWhatsAppInput.classList.add('border-red-500');
-    } else {
-      hideError(errorWhatsApp);
-      nomorWhatsAppInput.classList.remove('border-red-500');
-    }
+    setFieldState(nomorWhatsAppInput, errorWhatsApp, validateWhatsApp(nomorWhatsAppInput.value));
   });
 </script>

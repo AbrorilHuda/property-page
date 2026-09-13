@@ -1,22 +1,27 @@
 ---
 import { whatsappLink } from '../utils/config';
+import { Image } from 'astro:assets';
+import livingRoomImg from '../assets/images/living_room.png';
 ---
 
 <section id="about" class="py-20 md:py-28 bg-slate-900 text-white relative overflow-hidden">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
+
       <!-- Left Visual Image -->
       <div class="lg:col-span-6 relative">
         <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800">
-          <img
-            src="/images/living_room.png"
-            alt="Profil Perumahan Bumi Group"
+          <Image
+            src={livingRoomImg}
+            alt="Interior ruang keluarga hunian Bumi Group"
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            loading="lazy"
             class="w-full h-[380px] sm:h-[450px] object-cover"
           />
-          
+
           <div class="p-6 bg-slate-800 border-t border-slate-700">
-            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider mb-1">Visi Developer</div>
+            <div class="text-xs text-brand-400 font-bold uppercase tracking-wider mb-1">Visi Developer</div>
             <div class="text-sm sm:text-base font-semibold text-white">
               "Menghadirkan hunian berkualitas tinggi yang terjangkau, aman, dan menjadi warisan investasi keluarga."
             </div>
@@ -25,7 +30,7 @@ import { whatsappLink } from '../utils/config';
 
         <!-- Floating Badge -->
         <div class="absolute -top-4 -right-4 hidden sm:flex items-center gap-3 bg-white text-slate-900 p-4 rounded-2xl shadow-2xl border border-slate-200">
-          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center text-xl font-bold">
+          <div class="w-12 h-12 rounded-xl bg-brand-700 text-white flex items-center justify-center text-xl font-bold">
             10+
           </div>
           <div>
@@ -47,24 +52,25 @@ import { whatsappLink } from '../utils/config';
 
         <div class="grid grid-cols-2 gap-4 pt-2">
           <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
-            <div class="text-2xl font-extrabold text-emerald-400 mb-1">500+</div>
+            <div class="text-2xl font-extrabold text-brand-400 mb-1">500+</div>
             <div class="text-xs font-semibold text-slate-200">Unit Rumah Terbangun</div>
           </div>
           <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
-            <div class="text-2xl font-extrabold text-emerald-400 mb-1">99%</div>
+            <div class="text-2xl font-extrabold text-brand-400 mb-1">99%</div>
             <div class="text-xs font-semibold text-slate-200">Tingkat Kepuasan Pembeli</div>
           </div>
         </div>
 
         <div class="pt-4">
+          <!-- Gaya sekunder (outline) — layar ini sudah punya CTA primer di hero -->
           <a
             href={whatsappLink('Halo Bumi Group, saya ingin berkonsultasi mengenai latar belakang & portofolio perumahan.')}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white px-7 py-3.5 rounded-xl font-bold shadow-lg transition-all min-h-[48px]"
+            class="inline-flex items-center gap-3 border-2 border-slate-600 hover:border-brand-400 hover:bg-slate-800/60 text-white px-7 py-3.5 rounded-xl font-bold transition-all min-h-[48px]"
           >
             <span>Hubungi Tim Marketing</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
       </div>

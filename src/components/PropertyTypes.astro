@@ -1,5 +1,9 @@
 ---
 import { whatsappLink } from '../utils/config';
+import { Image } from 'astro:assets';
+import tipe36 from '../assets/images/tipe_36.png';
+import tipe45 from '../assets/images/tipe_45.png';
+import tipe60 from '../assets/images/tipe_60.png';
 
 const properties = [
   {
@@ -8,7 +12,7 @@ const properties = [
     tagline: 'Hunian Minimalis & Asri untuk Keluarga Muda',
     priceDisplay: 'Rp 250 Juta-an',
     estMonthly: '1,6 Jt/bulan',
-    image: '/images/tipe_36.png',
+    image: tipe36,
     badge: 'Best Seller',
     bedrooms: 2,
     bathrooms: 1,
@@ -30,7 +34,7 @@ const properties = [
     tagline: 'Ruang Lega & Nyaman untuk Keluarga Berkembang',
     priceDisplay: 'Rp 350 Juta-an',
     estMonthly: '2,2 Jt/bulan',
-    image: '/images/tipe_45.png',
+    image: tipe45,
     badge: 'Paling Diminati',
     bedrooms: 2,
     bathrooms: 2,
@@ -52,7 +56,7 @@ const properties = [
     tagline: 'Hunian Premium Eksklusif dengan Desain Mewah',
     priceDisplay: 'Rp 520 Juta-an',
     estMonthly: '3,4 Jt/bulan',
-    image: '/images/tipe_60.png',
+    image: tipe60,
     badge: 'Premium Edition',
     bedrooms: 3,
     bathrooms: 2,
@@ -75,7 +79,7 @@ const properties = [
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
     <!-- Header -->
     <div class="reveal text-center max-w-3xl mx-auto mb-16 space-y-4">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 border border-brand-300 text-brand-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
         Pilihan Tipe Unit
       </div>
       <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -90,20 +94,22 @@ const properties = [
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {properties.map((prop, idx) => (
         <div class={`reveal reveal-delay-${idx + 1} hover-lift bg-white rounded-3xl overflow-hidden shadow-card border border-slate-200 flex flex-col h-full hover:shadow-2xl transition-all duration-300`}>
-          
+
           <!-- Image Header -->
           <div class="relative h-64 overflow-hidden bg-slate-100">
-            <img
+            <Image
               src={prop.image}
-              alt={prop.name}
-              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              alt={`Tampak depan ${prop.name}`}
+              widths={[480, 800]}
+              sizes="(min-width: 1024px) 33vw, 100vw"
               loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
             <div class="absolute inset-0 bg-slate-950/40"></div>
-            
+
             <!-- Top Badges -->
             <div class="absolute top-4 left-4">
-              <span class="bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+              <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
                 {prop.badge}
               </span>
             </div>
@@ -111,7 +117,7 @@ const properties = [
             <!-- Price Tag on Image -->
             <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white">
               <div>
-                <div class="text-[11px] text-slate-200 uppercase tracking-wider font-bold">Harga Mulai Dari</div>
+                <div class="text-xs text-slate-200 uppercase tracking-wider font-bold">Harga Mulai Dari</div>
                 <div class="text-2xl font-extrabold text-white">{prop.priceDisplay}</div>
               </div>
               <div class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold border border-slate-700">
@@ -129,19 +135,19 @@ const properties = [
               <!-- Specs Grid Icons -->
               <div class="grid grid-cols-2 gap-3 py-4 px-4 bg-slate-100 rounded-2xl mb-6 text-xs text-slate-900 font-bold border border-slate-200">
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-4 h-4 text-brand-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>Bangunan: <strong class="text-slate-900">{prop.buildingArea}</strong></span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-4 h-4 text-brand-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>Tanah: <strong class="text-slate-900">{prop.landArea}</strong></span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-4 h-4 text-brand-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>K. Tidur: <strong class="text-slate-900">{prop.bedrooms} Unit</strong></span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-4 h-4 text-brand-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>K. Mandi: <strong class="text-slate-900">{prop.bathrooms} Unit</strong></span>
                 </div>
               </div>
@@ -149,8 +155,8 @@ const properties = [
               <!-- Feature Pills -->
               <div class="flex flex-wrap gap-2 mb-2">
                 {prop.features.map((f) => (
-                  <span class="text-[11px] font-bold bg-emerald-50 text-emerald-900 px-3 py-1 rounded-full border border-emerald-200 inline-flex items-center gap-1">
-                    <svg class="w-3 h-3 text-emerald-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span class="text-xs font-bold bg-brand-50 text-brand-900 px-3 py-1 rounded-full border border-brand-200 inline-flex items-center gap-1">
+                    <svg class="w-3 h-3 text-brand-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                     {f}
                   </span>
                 ))}
@@ -163,18 +169,18 @@ const properties = [
                 href={whatsappLink(`Halo, saya tertarik dengan ${prop.name} (Harga ${prop.priceDisplay}). Boleh minta info pricelist & brosur detail?`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center justify-center gap-2 w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 px-4 rounded-xl font-extrabold shadow-md hover:scale-105 active:scale-95 transition-all min-h-[48px]"
+                class="flex items-center justify-center gap-2 w-full bg-brand-700 hover:bg-brand-800 text-white py-3.5 px-4 rounded-xl font-extrabold shadow-md active:scale-[0.98] transition-all min-h-[48px]"
               >
                 <span>Konsultasi {prop.name}</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
 
               <button
                 type="button"
                 data-spec-modal-target={prop.id}
-                class="spec-modal-btn w-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 py-2.5 px-4 rounded-xl text-xs font-bold transition-colors min-h-[40px] inline-flex items-center justify-center gap-2"
+                class="spec-modal-btn w-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 py-2.5 px-4 rounded-xl text-xs font-bold transition-colors min-h-11 inline-flex items-center justify-center gap-2"
               >
-                <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
                 <span>Lihat Spesifikasi Bangunan</span>
               </button>
             </div>
@@ -190,24 +196,25 @@ const properties = [
 {properties.map((prop) => (
   <div
     id={`modal-${prop.id}`}
-    class="spec-modal fixed inset-0 z-[2000] hidden bg-slate-950/80 p-4 overflow-y-auto"
+    class="spec-modal fixed inset-0 z-70 hidden bg-slate-950/80 p-4 overflow-y-auto"
     role="dialog"
     aria-modal="true"
+    aria-labelledby={`modal-title-${prop.id}`}
   >
     <div class="min-h-screen flex items-center justify-center">
-      <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 text-slate-900 animate-in fade-in zoom-in duration-300">
+      <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 text-slate-900">
         <button
           type="button"
           data-spec-modal-close={`modal-${prop.id}`}
-          class="spec-modal-close absolute top-6 right-6 text-slate-500 hover:text-slate-900 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-slate-100 font-bold hover:rotate-90 transition-transform duration-200"
+          class="spec-modal-close absolute top-6 right-6 text-slate-500 hover:text-slate-900 min-w-11 min-h-11 flex items-center justify-center rounded-full bg-slate-100 font-bold hover:rotate-90 transition-transform duration-200"
           aria-label="Tutup modal"
         >
           ✕
         </button>
 
-        <div class="flex items-center gap-3 mb-4">
-          <span class="bg-emerald-700 text-white text-xs font-bold px-3 py-1 rounded-full">{prop.badge}</span>
-          <h3 class="text-slate-900 text-xl font-bold">{prop.name}</h3>
+        <div class="flex items-center gap-3 mb-4 flex-wrap">
+          <span class="bg-brand-700 text-white text-xs font-bold px-3 py-1 rounded-full">{prop.badge}</span>
+          <h3 class="text-slate-900 text-xl font-bold" id={`modal-title-${prop.id}`}>{prop.name}</h3>
         </div>
 
         <p class="text-sm font-semibold text-slate-600 mb-6">Spesifikasi Material & Bangunan Resmi Bumi Group</p>
@@ -244,7 +251,7 @@ const properties = [
             href={whatsappLink(`Halo, saya mau pesan unit ${prop.name}. Mohon dibantu info berkas KPR & jadwal survey.`)}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex-1 bg-emerald-700 text-white text-center py-3 rounded-xl font-bold hover:bg-emerald-800 transition-colors"
+            class="flex-1 bg-brand-700 text-white text-center py-3 rounded-xl font-bold hover:bg-brand-800 transition-colors min-h-11 inline-flex items-center justify-center"
           >
             Pesan Unit Ini
           </a>
@@ -255,22 +262,28 @@ const properties = [
 ))}
 
 <script>
-  const openBtns = document.querySelectorAll('.spec-modal-btn');
-  const closeBtns = document.querySelectorAll('.spec-modal-close');
+  import { openDialog, closeDialog, isDialogOpen, dialogKeydown, backdropClick } from '../utils/dialog';
+
+  const openBtns = document.querySelectorAll<HTMLButtonElement>('.spec-modal-btn');
+  const closeBtns = document.querySelectorAll<HTMLButtonElement>('.spec-modal-close');
 
   openBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-spec-modal-target');
       const modal = document.getElementById(`modal-${targetId}`);
-      modal?.classList.remove('hidden');
+      if (modal && !isDialogOpen(modal)) openDialog(modal);
     });
   });
 
   closeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const modalId = btn.getAttribute('data-spec-modal-close');
-      const modal = document.getElementById(modalId || '');
-      modal?.classList.add('hidden');
+      const modal = document.getElementById(btn.getAttribute('data-spec-modal-close') || '');
+      if (modal) closeDialog(modal);
     });
+  });
+
+  document.querySelectorAll<HTMLElement>('.spec-modal').forEach((modal) => {
+    modal.addEventListener('keydown', (e) => dialogKeydown(modal, e as KeyboardEvent));
+    modal.addEventListener('click', (e) => backdropClick(modal, e as MouseEvent));
   });
 </script>

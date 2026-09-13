@@ -31,7 +31,7 @@ const testimonials = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {testimonials.map((t, idx) => (
-        <div class={`reveal reveal-delay-${idx + 1} hover-lift bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-card hover:border-emerald-400 transition-all`}>
+        <div class={`reveal reveal-delay-${idx + 1} hover-lift bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-card hover:border-brand-400 transition-all`}>
           <div>
             <div class="flex gap-1 mb-4">
               {Array.from({ length: t.rating }).map(() => (
@@ -47,7 +47,7 @@ const testimonials = [
           </div>
 
           <div class="flex items-center gap-3 border-t border-slate-200 pt-4">
-            <div class="w-11 h-11 rounded-full bg-emerald-700 text-white flex items-center justify-center font-extrabold text-base shadow-sm">
+            <div class="w-11 h-11 rounded-full bg-brand-700 text-white flex items-center justify-center font-extrabold text-base shadow-sm">
               {t.name.charAt(0)}
             </div>
             <div>

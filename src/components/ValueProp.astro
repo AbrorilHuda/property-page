@@ -3,64 +3,95 @@ const values = [
   {
     title: 'Lokasi Strategis & Bernilai Tinggi',
     desc: 'Terletak di kawasan berkembang pesat dengan akses tol langsung, dekat faskes, sekolah, dan pusat bisnis.',
-    highlight: 'Akses Mudah',
-    iconPath: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z'
+    iconPath: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z',
+    variant: 'light',
   },
   {
     title: 'Legalitas 100% Aman (SHM & IMB)',
     desc: 'Sertifikat Hak Milik (SHM) dan Izin Mendirikan Bangunan (IMB) sudah terpecah per unit. Bebas dari masalah hukum.',
-    highlight: 'Terjamin 100%',
-    iconPath: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+    iconPath: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+    variant: 'dark',
   },
   {
     title: 'Konsep Hunian Hijau & Asri',
     desc: 'Tata ruang mengutamakan pencahayaan alami, resapan air baik, dan penghijauan kawasan yang asri.',
-    highlight: 'Lingkungan Sehat',
-    iconPath: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'
+    iconPath: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+    variant: 'tint',
   },
   {
     title: 'Skema KPR Mudah & Transparan',
     desc: 'Bekerja sama dengan bank-bank besar. DP terjangkau, cicilan fleksibel, dan proses aplikasi dibantu hingga ACC.',
-    highlight: 'Proses Dibantu',
-    iconPath: 'M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+    iconPath: 'M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+    variant: 'accent',
   },
 ];
+
+// Varian tampilan kartu bento: terang / gelap (trust) / tint lembut / aksen emerald (konversi)
+const cardStyles: Record<string, { card: string; iconBox: string; title: string; desc: string }> = {
+  light: {
+    card: 'bg-white border-slate-200 hover:border-brand-400',
+    iconBox: 'bg-brand-700 border border-brand-600 text-white shadow-md',
+    title: 'text-slate-900',
+    desc: 'text-slate-700',
+  },
+  dark: {
+    card: 'bg-slate-950 border-slate-900 hover:border-brand-500/60',
+    iconBox: 'bg-brand-500/15 border border-brand-400/30 text-brand-400',
+    title: 'text-white',
+    desc: 'text-slate-300',
+  },
+  tint: {
+    card: 'bg-slate-50 border-slate-200 hover:border-brand-400',
+    iconBox: 'bg-brand-700 border border-brand-600 text-white shadow-md',
+    title: 'text-slate-900',
+    desc: 'text-slate-700',
+  },
+  accent: {
+    card: 'bg-brand-700 border-brand-600 hover:border-brand-500',
+    iconBox: 'bg-white/10 border border-white/25 text-white',
+    title: 'text-white',
+    desc: 'text-brand-50',
+  },
+};
+
+// Lebar kartu bento: 7/5 lalu 5/7 agar ritme grid tidak seragam
+const spans = ['md:col-span-7', 'md:col-span-5', 'md:col-span-5', 'md:col-span-7'];
 ---
 
 <section id="value-prop" class="py-20 md:py-28 bg-white relative">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
-    
+
     <!-- Section Header -->
-    <div class="reveal text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <div class="reveal max-w-3xl mb-14 md:mb-16 space-y-4">
       <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-        Lebih dari Sekadar Rumah, Ini Investasi Masa Depan Anda
+        Lebih dari Sekadar Rumah, <span class="text-brand-700">Ini Investasi Masa Depan Anda</span>
       </h2>
-      <p class="text-slate-700 text-base sm:text-lg font-medium max-w-2xl mx-auto">
+      <p class="text-slate-700 text-base sm:text-lg font-medium max-w-2xl">
         Empat alasan utama mengapa ribuan pembeli mempercayakan hunian impian mereka kepada Bumi Group.
       </p>
     </div>
 
-    <!-- Values Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {values.map((v, idx) => (
-        <div class={`reveal reveal-delay-${idx + 1} hover-lift bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-card flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-all`}>
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-700 text-white border border-emerald-600 flex items-center justify-center shadow-md flex-shrink-0">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d={v.iconPath} />
-              </svg>
-            </div>
+    <!-- Values Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+      {values.map((v, idx) => {
+        const style = cardStyles[v.variant];
+        return (
+          <div class={`reveal reveal-delay-${idx + 1} hover-lift ${spans[idx]} ${style.card} p-8 rounded-3xl border shadow-card transition-all`}>
+            <div class="flex items-start gap-5">
+              <div class={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 ${style.iconBox}`}>
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={v.iconPath} />
+                </svg>
+              </div>
 
-            <div class="space-y-2">
-              <span class="inline-block text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full">
-                {v.highlight}
-              </span>
-              <h3 class="text-slate-900 text-xl font-extrabold">{v.title}</h3>
-              <p class="text-slate-700 text-sm sm:text-base leading-relaxed font-semibold">{v.desc}</p>
+              <div class="space-y-2">
+                <h3 class={`text-xl font-extrabold ${style.title}`}>{v.title}</h3>
+                <p class={`text-sm sm:text-base leading-relaxed font-semibold ${style.desc}`}>{v.desc}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
 
   </div>

@@ -17,17 +17,20 @@ const siteUrl = 'https://bumi-group.com';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1E2536" />
+  <meta name="theme-color" content="#020617" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={siteUrl} />
+
+  <!-- Tandai JS aktif sedini mungkin; animasi reveal hanya berjalan bila JS hidup -->
+  <script is:inline>document.documentElement.classList.add('js');</script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={siteUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={`${siteUrl}/images/hero_serene_house.png`} />
+  <meta property="og:image" content={`${siteUrl}/images/og-cover.jpg`} />
   <meta property="og:locale" content="id_ID" />
 
   <!-- Structured Data -->
@@ -47,9 +50,17 @@ const siteUrl = 'https://bumi-group.com';
     }
   </script>
 
+  <!-- Fonts: preconnect + link non-blocking (menggantikan @import CSS) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+
   <link rel="icon" type="image/png" href="/bumigrouplogo.png" />
 </head>
 <body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:bg-brand-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+    Lewati ke konten utama
+  </a>
   <slot />
 
   <!-- Scroll Reveal Motion Controller -->
