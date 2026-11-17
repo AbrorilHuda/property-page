@@ -1,165 +1,170 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { whatsappLink } from '../utils/config';
+import { companyProfile } from '../data/bumiGroup';
+
+const simulationPresets = [
+  { label: 'Simulasi 250 Jt', price: 250000000 },
+  { label: 'Simulasi 350 Jt', price: 350000000 },
+  { label: 'Simulasi 500 Jt', price: 500000000 },
+];
 ---
 
-<section id="kpr-calculator" class="py-20 md:py-28 bg-slate-950 text-white relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<section id="simulasi-kpr" class="py-20 md:py-28 bg-canvas-light dark:bg-canvas-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-      <!-- Left Info Header -->
+      <!-- Left Info -->
       <div class="reveal lg:col-span-5 space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-brand-400 text-xs sm:text-sm font-bold uppercase tracking-wider">
-          Simulasi KPR Interaktif
-        </div>
-
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
-          Hitung Estimasi Angsuran Rumah Impian
+        <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+          Kalkulator Simulasi Cicilan KPR
         </h2>
-
-        <p class="text-slate-100 text-base sm:text-lg leading-relaxed font-medium">
-          Simulasikan cicilan per bulan sesuai dengan pilihan tipe unit, besaran uang muka (DP), dan pilihan masa tenor kredit KPR Anda.
+        <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-medium">
+          Gunakan alat hitung ini untuk memperkirakan angsuran bulanan sesuai anggaran harga unit, persentase uang muka, dan pilihan tenor kredit Anda.
         </p>
 
-        <div class="space-y-4 pt-4 text-sm font-semibold">
-          <div class="flex items-center gap-3 bg-slate-900 p-4 rounded-2xl border border-slate-800 hover-lift">
-            <div class="w-10 h-10 rounded-xl bg-brand-950 border border-brand-400/40 flex items-center justify-center text-brand-400 shrink-0 font-extrabold text-lg" aria-hidden="true">
-              ✓
-            </div>
-            <div>
-              <div class="font-bold text-white">Bekerja Sama dengan Bank BUMN & Swasta</div>
-              <div class="text-xs text-slate-300 font-medium">KPR BTN, Bank Mandiri, BRI, BCA, BSI Syariah</div>
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-[#DCE3D6] dark:border-slate-800">
+            <Icon name="ph:bank-bold" class="w-6 h-6 text-brand-700 dark:text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+            <div class="space-y-0.5">
+              <div class="font-bold text-sm text-[#111D2E] dark:text-white">Estimasi Acuan Perbankan</div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+                Perhitungan menggunakan suku bunga simulasi 6,5% per tahun sebagai gambaran awal sebelum pengajuan bank.
+              </p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 bg-slate-900 p-4 rounded-2xl border border-slate-800 hover-lift">
-            <div class="w-10 h-10 rounded-xl bg-brand-950 border border-brand-400/40 flex items-center justify-center text-brand-400 shrink-0 font-extrabold text-lg" aria-hidden="true">
-              ✓
-            </div>
-            <div>
-              <div class="font-bold text-white">Bantu Proses Berkas KPR Sampai ACC</div>
-              <div class="text-xs text-slate-300 font-medium">Tim marketing kami siap mendampingi pengajuan berkas</div>
+          <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white dark:bg-surface-dark border border-[#DCE3D6] dark:border-slate-800">
+            <Icon name="ph:files-bold" class="w-6 h-6 text-brand-700 dark:text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+            <div class="space-y-0.5">
+              <div class="font-bold text-sm text-[#111D2E] dark:text-white">Konsultasi Harga &amp; Promo Resmi</div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+                Hubungi Admin Kantor Pusat ({companyProfile.mainAdminPhone}) untuk pricelist resmi sesuai proyek pilihan Anda.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right Interactive Calculator Card -->
-      <div class="reveal reveal-delay-2 lg:col-span-7">
-        <div class="bg-white rounded-3xl p-6 sm:p-10 text-slate-900 shadow-2xl border border-slate-200 hover-lift">
+      <!-- Right Calculator Card -->
+      <div class="reveal reveal-delay-1 lg:col-span-7">
+        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card border border-[#DCE3D6] dark:border-slate-800 space-y-6">
 
-          <div class="flex items-center justify-between gap-3 border-b border-slate-200 pb-6 mb-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DCE3D6] dark:border-slate-800 pb-5">
             <div>
-              <h3 class="text-2xl font-extrabold text-slate-900">Kalkulator KPR</h3>
-              <p class="text-xs font-semibold text-slate-600">Estimasi Bunga Acuan KPR ~ 6,5% / tahun</p>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-[#111D2E] dark:text-white">Simulasi Angsuran</h3>
+              <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+                Masukkan nominal harga atau pilih contoh simulasi di bawah
+              </p>
             </div>
-            <span class="bg-brand-100 text-brand-800 border border-brand-300 text-xs font-bold px-3 py-1.5 rounded-full shrink-0">
-              Instan & Transparan
+            <span class="px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/70 text-brand-800 dark:text-brand-300 border border-brand-200 dark:border-brand-800 text-xs font-bold">
+              Bunga Acuan 6,5%
             </span>
           </div>
 
-          <div class="space-y-6">
-            <!-- Preset Property Type Selector -->
-            <div role="group" aria-labelledby="type-label">
-              <span id="type-label" class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
-                Pilih Tipe Rumah / Harga Unit
-              </span>
-              <div class="grid grid-cols-3 gap-3">
+          <!-- Preset + Custom Price -->
+          <div class="space-y-3">
+            <label for="kpr-price-input" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+              Estimasi Harga Unit (Rupiah)
+            </label>
+            <input
+              type="number"
+              id="kpr-price-input"
+              min="50000000"
+              step="10000000"
+              value="350000000"
+              class="w-full px-4 py-3 rounded-xl border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark text-[#111D2E] dark:text-white font-bold text-base focus:outline-none focus:border-brand-700 dark:focus:border-brand-400"
+            />
+            <div class="grid grid-cols-3 gap-2.5" role="group" aria-label="Contoh simulasi anggaran harga unit">
+              {simulationPresets.map((preset, idx) => (
                 <button
                   type="button"
-                  data-price="250000000"
-                  aria-pressed="true"
-                  class="type-btn px-4 py-3 rounded-xl border-2 border-brand-700 bg-brand-50 text-slate-900 font-extrabold text-xs sm:text-sm text-center transition-colors"
+                  data-price={preset.price}
+                  aria-pressed={idx === 1 ? 'true' : 'false'}
+                  class={`kpr-preset-btn px-3 py-2.5 rounded-xl border text-xs sm:text-sm font-bold text-center transition-colors min-h-11 ${
+                    idx === 1
+                      ? 'border-brand-700 dark:border-brand-400 bg-brand-50 dark:bg-brand-950/70 text-brand-800 dark:text-brand-300'
+                      : 'border-[#DCE3D6] dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-700 dark:hover:border-brand-400'
+                  }`}
                 >
-                  Tipe 36<br /><span class="text-xs text-slate-600 font-medium">250 Juta</span>
+                  {preset.label}
                 </button>
-                <button
-                  type="button"
-                  data-price="350000000"
-                  aria-pressed="false"
-                  class="type-btn px-4 py-3 rounded-xl border border-slate-300 hover:border-brand-700 font-extrabold text-xs sm:text-sm text-center transition-colors"
-                >
-                  Tipe 45<br /><span class="text-xs text-slate-600 font-medium">350 Juta</span>
-                </button>
-                <button
-                  type="button"
-                  data-price="520000000"
-                  aria-pressed="false"
-                  class="type-btn px-4 py-3 rounded-xl border border-slate-300 hover:border-brand-700 font-extrabold text-xs sm:text-sm text-center transition-colors"
-                >
-                  Tipe 60<br /><span class="text-xs text-slate-600 font-medium">520 Juta</span>
-                </button>
-              </div>
+              ))}
             </div>
-
-            <!-- Down Payment Percentage -->
-            <div>
-              <div class="flex justify-between items-center mb-2 gap-3">
-                <label for="dp-range" class="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                  Uang Muka / DP (%)
-                </label>
-                <span id="dp-val-display" class="text-sm font-extrabold text-brand-800 text-right">DP 10% (Rp 25.000.000)</span>
-              </div>
-              <input
-                type="range"
-                id="dp-range"
-                min="0"
-                max="30"
-                step="5"
-                value="10"
-                aria-valuetext="DP 10% (Rp 25.000.000)"
-                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-700"
-              />
-              <div class="flex justify-between text-xs font-bold text-slate-600 mt-1" aria-hidden="true">
-                <span>0% (Promo DP 0%)</span>
-                <span>10%</span>
-                <span>20%</span>
-                <span>30%</span>
-              </div>
-            </div>
-
-            <!-- Tenor Duration -->
-            <div role="group" aria-labelledby="tenor-label">
-              <span id="tenor-label" class="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">
-                Jangka Waktu Kredit / Tenor
-              </span>
-              <div class="grid grid-cols-4 gap-3">
-                <button type="button" data-tenor="5" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors">5 Thn</button>
-                <button type="button" data-tenor="10" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors">10 Thn</button>
-                <button type="button" data-tenor="15" aria-pressed="true" class="tenor-btn px-3 py-2.5 rounded-xl border-2 border-brand-700 bg-brand-50 text-xs sm:text-sm font-bold text-center transition-colors">15 Thn</button>
-                <button type="button" data-tenor="20" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors">20 Thn</button>
-              </div>
-            </div>
-
-            <!-- Calculation Output Box (High Contrast Dark Slate Container) -->
-            <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-4 shadow-lg border border-slate-800" aria-live="polite">
-              <div class="flex justify-between items-center text-xs text-slate-300 border-b border-slate-800 pb-3 font-semibold gap-3">
-                <span>Plafon Pinjaman KPR:</span>
-                <span id="loan-amount" class="font-extrabold text-white text-sm">Rp 225.000.000</span>
-              </div>
-              <div class="flex justify-between items-center gap-3">
-                <div>
-                  <div class="text-xs text-slate-200 uppercase font-bold">Estimasi Cicilan per Bulan</div>
-                  <div class="text-xs text-brand-400 font-semibold">*Sudah termasuk perkiraan bunga KPR</div>
-                </div>
-                <div id="monthly-installment" class="text-2xl sm:text-3xl font-extrabold text-brand-400">
-                  Rp 1.959.992 /bln
-                </div>
-              </div>
-            </div>
-
-            <!-- Consultation Trigger -->
-            <a
-              id="kpr-wa-btn"
-              href={whatsappLink('Halo, saya sudah menghitung simulasi KPR untuk rumah seharga Rp 250 Juta dengan DP 10% dan Tenor 15 thn (Estimasi ~ Rp 1.959.992/bln). Mohon info kelayakan & syarat berkas.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-center gap-2.5 w-full bg-brand-700 hover:bg-brand-800 text-white py-4 rounded-xl font-extrabold shadow-md active:scale-[0.99] transition-all min-h-[50px]"
-            >
-              <span>Konsultasi Pengajuan KPR via WhatsApp</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-
           </div>
+
+          <!-- Down Payment -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center gap-3">
+              <label for="dp-range" class="text-sm font-bold text-[#111D2E] dark:text-white">
+                Uang Muka / DP (%)
+              </label>
+              <span id="dp-val-display" class="text-sm font-extrabold text-brand-700 dark:text-brand-400 text-right">
+                DP 10% (Rp 35.000.000)
+              </span>
+            </div>
+            <input
+              type="range"
+              id="dp-range"
+              min="0"
+              max="30"
+              step="5"
+              value="10"
+              aria-valuetext="DP 10% (Rp 35.000.000)"
+              class="w-full h-2 bg-canvas-muted dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-700 dark:accent-brand-400"
+            />
+            <div class="flex justify-between text-xs font-semibold text-slate-500 dark:text-slate-400" aria-hidden="true">
+              <span>0%</span>
+              <span>10%</span>
+              <span>20%</span>
+              <span>30%</span>
+            </div>
+          </div>
+
+          <!-- Tenor -->
+          <div class="space-y-2" role="group" aria-labelledby="tenor-label">
+            <span id="tenor-label" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+              Jangka Waktu / Tenor Kredit
+            </span>
+            <div class="grid grid-cols-4 gap-2.5">
+              <button type="button" data-tenor="5" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-[#DCE3D6] dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors min-h-11">5 Thn</button>
+              <button type="button" data-tenor="10" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-[#DCE3D6] dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors min-h-11">10 Thn</button>
+              <button type="button" data-tenor="15" aria-pressed="true" class="tenor-btn px-3 py-2.5 rounded-xl border border-brand-700 dark:border-brand-400 bg-brand-50 dark:bg-brand-950/70 text-brand-800 dark:text-brand-300 text-xs sm:text-sm font-bold text-center transition-colors min-h-11">15 Thn</button>
+              <button type="button" data-tenor="20" aria-pressed="false" class="tenor-btn px-3 py-2.5 rounded-xl border border-[#DCE3D6] dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-brand-700 text-xs sm:text-sm font-bold text-center transition-colors min-h-11">20 Thn</button>
+            </div>
+          </div>
+
+          <!-- Calculation Output -->
+          <div class="bg-[#111D2E] dark:bg-canvas-dark text-white p-6 rounded-2xl space-y-4 border border-slate-800" aria-live="polite">
+            <div class="flex justify-between items-center text-xs sm:text-sm text-slate-300 border-b border-slate-700/80 pb-3 font-semibold gap-3">
+              <span>Plafon Pinjaman KPR</span>
+              <span id="loan-amount" class="font-extrabold text-white">Rp 315.000.000</span>
+            </div>
+            <div class="flex flex-wrap justify-between items-center gap-3">
+              <div>
+                <div class="text-xs text-slate-300 font-bold">Estimasi Angsuran per Bulan</div>
+                <div class="text-xs text-brand-400 font-semibold">Simulasi indikatif sebelum akad bank</div>
+              </div>
+              <div id="monthly-installment" class="text-2xl sm:text-3xl font-extrabold text-brand-400">
+                Rp 2.743.989 /bln
+              </div>
+            </div>
+          </div>
+
+          <a
+            id="kpr-wa-btn"
+            href={whatsappLink(
+              'Halo Admin Bumi Group Pamekasan, saya telah menghitung simulasi KPR (estimasi unit Rp 350.000.000, DP 10%, tenor 15 tahun). Boleh minta pricelist resmi proyek yang tersedia?',
+              companyProfile.mainAdminPhone
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2.5 w-full bg-brand-700 hover:bg-brand-800 text-white py-3.5 px-6 rounded-xl font-bold shadow-sm active:scale-[0.98] transition-all min-h-12 whitespace-nowrap"
+          >
+            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+            <span>Konsultasi Simulasi KPR</span>
+          </a>
+
         </div>
       </div>
 
@@ -169,83 +174,93 @@ import { whatsappLink } from '../utils/config';
 
 <script>
   import { whatsappLink } from '../utils/config';
+  import { companyProfile } from '../data/bumiGroup';
 
-  let selectedPrice = 250000000;
+  let selectedPrice = 350000000;
   let selectedDpPercent = 10;
   let selectedTenorYears = 15;
   const annualInterestRate = 0.065;
 
-  const typeBtns = document.querySelectorAll('.type-btn');
-  const tenorBtns = document.querySelectorAll('.tenor-btn');
-  const dpRange = document.getElementById('dp-range') as HTMLInputElement;
+  const priceInput = document.getElementById('kpr-price-input') as HTMLInputElement | null;
+  const presetBtns = document.querySelectorAll<HTMLButtonElement>('.kpr-preset-btn');
+  const tenorBtns = document.querySelectorAll<HTMLButtonElement>('.tenor-btn');
+  const dpRange = document.getElementById('dp-range') as HTMLInputElement | null;
   const dpDisplay = document.getElementById('dp-val-display');
   const loanAmountEl = document.getElementById('loan-amount');
   const monthlyEl = document.getElementById('monthly-installment');
-  const waBtn = document.getElementById('kpr-wa-btn') as HTMLAnchorElement;
+  const waBtn = document.getElementById('kpr-wa-btn') as HTMLAnchorElement | null;
 
-  function setSelected(buttons: NodeListOf<Element>, selected: Element) {
-    buttons.forEach(b => {
+  function updateBtnGroup(buttons: NodeListOf<HTMLButtonElement>, selected: HTMLButtonElement | null) {
+    buttons.forEach((b) => {
       const isSel = b === selected;
-      b.classList.toggle('border-2', isSel);
-      b.classList.toggle('border-brand-700', isSel);
-      b.classList.toggle('bg-brand-50', isSel);
-      b.classList.toggle('border', !isSel);
-      b.classList.toggle('border-slate-300', !isSel);
       b.setAttribute('aria-pressed', String(isSel));
+      b.classList.toggle('border-brand-700', isSel);
+      b.classList.toggle('dark:border-brand-400', isSel);
+      b.classList.toggle('bg-brand-50', isSel);
+      b.classList.toggle('dark:bg-brand-950/70', isSel);
+      b.classList.toggle('text-brand-800', isSel);
+      b.classList.toggle('dark:text-brand-300', isSel);
+
+      b.classList.toggle('border-[#DCE3D6]', !isSel);
+      b.classList.toggle('dark:border-slate-700', !isSel);
+      b.classList.toggle('text-slate-700', !isSel);
+      b.classList.toggle('dark:text-slate-300', !isSel);
     });
   }
 
   function calculateKpr() {
-    const dpAmount = selectedPrice * (selectedDpPercent / 100);
-    const loanAmount = selectedPrice - dpAmount;
+    const safePrice = Number.isFinite(selectedPrice) && selectedPrice > 0 ? selectedPrice : 0;
+    const dpAmount = safePrice * (selectedDpPercent / 100);
+    const loanAmount = Math.max(0, safePrice - dpAmount);
 
     const r = annualInterestRate / 12;
     const n = selectedTenorYears * 12;
 
     let monthly = 0;
-    if (loanAmount > 0) {
-      monthly = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    if (loanAmount > 0 && n > 0) {
+      monthly = (loanAmount * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
     }
 
     const fmtMoney = (num: number) => 'Rp ' + Math.round(num).toLocaleString('id-ID');
 
-    if (dpDisplay) {
-      dpDisplay.textContent = `DP ${selectedDpPercent}% (${fmtMoney(dpAmount)})`;
-    }
-    if (loanAmountEl) {
-      loanAmountEl.textContent = fmtMoney(loanAmount);
-    }
-    if (monthlyEl) {
-      monthlyEl.textContent = fmtMoney(monthly) + ' /bln';
-    }
-    if (dpRange) {
-      dpRange.setAttribute('aria-valuetext', `DP ${selectedDpPercent}% (${fmtMoney(dpAmount)})`);
-    }
+    if (dpDisplay) dpDisplay.textContent = `DP ${selectedDpPercent}% (${fmtMoney(dpAmount)})`;
+    if (loanAmountEl) loanAmountEl.textContent = fmtMoney(loanAmount);
+    if (monthlyEl) monthlyEl.textContent = fmtMoney(monthly) + ' /bln';
+    if (dpRange) dpRange.setAttribute('aria-valuetext', `DP ${selectedDpPercent}% (${fmtMoney(dpAmount)})`);
 
     if (waBtn) {
-      const msg = `Halo, saya telah menghitung simulasi KPR perumahan Bumi Group:\n- Harga Unit: ${fmtMoney(selectedPrice)}\n- DP (${selectedDpPercent}%): ${fmtMoney(dpAmount)}\n- Tenor: ${selectedTenorYears} Tahun\n- Estimasi Angsuran: ${fmtMoney(monthly)}/bulan.\n\nBoleh minta panduan berkas & jadwal survey lokasi?`;
-      waBtn.href = whatsappLink(msg);
+      const msg = `Halo Admin Bumi Group Pamekasan, saya sudah menghitung simulasi KPR:\n- Estimasi Harga: ${fmtMoney(safePrice)}\n- DP (${selectedDpPercent}%): ${fmtMoney(dpAmount)}\n- Tenor: ${selectedTenorYears} Tahun\n- Estimasi Angsuran: ${fmtMoney(monthly)}/bulan\n\nBoleh minta pricelist resmi & info unit yang tersedia?`;
+      waBtn.href = whatsappLink(msg, companyProfile.mainAdminPhone);
     }
   }
 
-  typeBtns.forEach(btn => {
+  presetBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      setSelected(typeBtns, btn);
-      selectedPrice = parseFloat(btn.getAttribute('data-price') || '250000000');
+      updateBtnGroup(presetBtns, btn);
+      selectedPrice = parseFloat(btn.getAttribute('data-price') || '350000000');
+      if (priceInput) priceInput.value = String(selectedPrice);
       calculateKpr();
     });
   });
 
-  tenorBtns.forEach(btn => {
+  priceInput?.addEventListener('input', () => {
+    const val = parseFloat(priceInput.value);
+    selectedPrice = Number.isFinite(val) ? val : 0;
+    const matched = Array.from(presetBtns).find((b) => parseFloat(b.dataset.price || '0') === selectedPrice) || null;
+    updateBtnGroup(presetBtns, matched);
+    calculateKpr();
+  });
+
+  tenorBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      setSelected(tenorBtns, btn);
-      selectedTenorYears = parseInt(btn.getAttribute('data-tenor') || '15');
+      updateBtnGroup(tenorBtns, btn);
+      selectedTenorYears = parseInt(btn.getAttribute('data-tenor') || '15', 10);
       calculateKpr();
     });
   });
 
   dpRange?.addEventListener('input', (e) => {
-    selectedDpPercent = parseInt((e.target as HTMLInputElement).value || '10');
+    selectedDpPercent = parseInt((e.target as HTMLInputElement).value || '10', 10);
     calculateKpr();
   });
 

@@ -1,122 +1,142 @@
 ---
 import { Image } from 'astro:assets';
-import tipe36 from '../assets/images/tipe_36.png';
-import livingRoom from '../assets/images/living_room.png';
-import tipe45 from '../assets/images/tipe_45.png';
-import facilityGate from '../assets/images/facility_gate.png';
-import tipe60 from '../assets/images/tipe_60.png';
-import heroHouse from '../assets/images/hero_house.png';
+import { Icon } from 'astro-icon/components';
+import tipe50Img from '../assets/images/cluster_tlanakan_50.jpg';
+import livingRoomImg from '../assets/images/living_room.png';
+import gateImg from '../assets/images/cluster_gate_pamekasan.jpg';
+import streetImg from '../assets/images/cluster_street_minimalist.jpg';
+import sereneImg from '../assets/images/hero_serene_house.png';
+import tipe45Img from '../assets/images/tipe_45.png';
 
 const galleryItems = [
   {
-    title: 'Fasad Minimalis Tipe 36',
-    category: 'eksterior',
-    image: tipe36,
-    desc: 'Desain tampak depan modern dengan carport luas & taman asri.'
+    title: 'Fasad Minimalis Tipe 50 (Tlanakan)',
+    category: 'fasad',
+    categoryLabel: 'Fasad Hunian',
+    image: tipe50Img,
+    desc: 'Garis fasad bersih dengan perpaduan dinding terang, aksen kayu hangat, dan carport lega.',
+    featured: true,
   },
   {
-    title: 'Ruang Tamu & Utilitas Modern',
+    title: 'Tata Ruang Keluarga Terang Alami',
     category: 'interior',
-    image: livingRoom,
-    desc: 'Interior hangat dengan pencahayaan alami optimal.'
+    categoryLabel: 'Interior',
+    image: livingRoomImg,
+    desc: 'Pemanfaatan bukaan lebar agar pencahayaan dan sirkulasi udara dalam rumah tetap optimal.',
+    featured: false,
   },
   {
-    title: 'Cluster Tipe 45 Tropical',
-    category: 'eksterior',
-    image: tipe45,
-    desc: 'Model 1.5 lantai dengan aksen kayu sintetis modern.'
+    title: 'Gerbang & Akses Masuk Klaster',
+    category: 'kawasan',
+    categoryLabel: 'Kawasan Klaster',
+    image: gateImg,
+    desc: 'Sistem gerbang klaster tertata untuk menjaga kenyamanan dan keamanan lingkungan hunian.',
+    featured: false,
   },
   {
-    title: 'Gerbang Utama & Keamanan 24 Jam',
-    category: 'fasilitas',
-    image: facilityGate,
-    desc: 'One Gate System dengan pos sekuriti & CCTV terpadu.'
+    title: 'Jalan Lingkungan Klaster Lebar',
+    category: 'kawasan',
+    categoryLabel: 'Kawasan Klaster',
+    image: streetImg,
+    desc: 'Akses jalan perumahan yang rapi dan lapang untuk kelancaran mobilitas penghuni.',
+    featured: false,
   },
   {
-    title: 'Tipe 60 Premium 2-Lantai',
-    category: 'eksterior',
-    image: tipe60,
-    desc: 'Hunian mewah 2 lantai dengan balkon & kaca lebar.'
+    title: 'Deret Unit Klaster Asri',
+    category: 'kawasan',
+    categoryLabel: 'Kawasan Klaster',
+    image: sereneImg,
+    desc: 'Penataan unit hunian yang serasi dengan ruang hijau depan rumah di setiap kavling.',
+    featured: false,
   },
   {
-    title: 'Kawasan Perumahan Asri',
-    category: 'fasilitas',
-    image: heroHouse,
-    desc: 'Lingkungan hijau bebas banjir untuk kenyamanan keluarga.'
+    title: 'Fasad Unit Keluarga Ekspansi',
+    category: 'fasad',
+    categoryLabel: 'Fasad Hunian',
+    image: tipe45Img,
+    desc: 'Alternatif proporsi fasad modern minimalis untuk kebutuhan ruang keluarga lebih besar.',
+    featured: false,
   },
 ];
 
 const filters = [
-  { value: 'all', label: 'Semua Foto' },
-  { value: 'eksterior', label: 'Eksterior Rumah' },
-  { value: 'interior', label: 'Interior Hunian' },
-  { value: 'fasilitas', label: 'Fasilitas Kawasan' },
+  { value: 'all', label: 'Semua Visual' },
+  { value: 'fasad', label: 'Fasad Hunian' },
+  { value: 'interior', label: 'Interior' },
+  { value: 'kawasan', label: 'Kawasan Klaster' },
 ];
 ---
 
-<section id="gallery" class="py-20 md:py-28 bg-white relative">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+<section id="galeri" class="py-20 md:py-28 bg-canvas-muted dark:bg-surface-dark border-y border-[#DCE3D6] dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-    <!-- Section Header -->
-    <div class="reveal text-center max-w-3xl mx-auto mb-12 space-y-4">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 border border-brand-300 text-brand-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
-        Galeri Perumahan
-      </div>
-      <h2 class="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-        Intip Suasana & Visual Hunian Bumi Group
+    <div class="reveal max-w-2xl mb-10 space-y-3">
+      <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Referensi Visual &amp; Suasana Klaster
       </h2>
-      <p class="text-slate-700 text-base sm:text-lg font-medium">
-        Lihat langsung keindahan arsitektur eksterior, penataan interior, serta lingkungan kawasan yang siap Anda huni.
+      <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
+        Eksplorasi konsep fasad modern minimalis, tata ruang interior, dan suasana lingkungan kawasan klaster.
       </p>
     </div>
 
-    <!-- Category Filter Tabs -->
-    <div class="reveal reveal-delay-1 flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter galeri berdasarkan kategori">
-      {filters.map((f, i) => (
+    <!-- Filter Buttons -->
+    <div class="reveal flex flex-wrap gap-2.5 mb-8" role="group" aria-label="Filter galeri berdasarkan kategori">
+      {filters.map((f, idx) => (
         <button
           type="button"
           data-filter={f.value}
-          aria-pressed={i === 0 ? 'true' : 'false'}
-          class={`filter-btn min-h-11 px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-md transition-colors ${i === 0
-            ? 'bg-slate-900 text-white border border-slate-900'
-            : 'bg-slate-100 text-slate-800 border border-slate-300 hover:bg-slate-200'}`}
+          aria-pressed={idx === 0 ? 'true' : 'false'}
+          class={`filter-btn min-h-11 px-5 py-2 rounded-full text-xs sm:text-sm font-bold border transition-colors whitespace-nowrap ${
+            idx === 0
+              ? 'bg-[#111D2E] text-white border-[#111D2E] dark:bg-brand-700 dark:border-brand-700'
+              : 'bg-white dark:bg-surface-dark-elevated text-slate-700 dark:text-slate-200 border-[#DCE3D6] dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-400'
+          }`}
         >
           {f.label}
         </button>
       ))}
     </div>
 
-    <!-- Gallery Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <!-- Asymmetric Gallery Grid (No overlaid pills on images) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {galleryItems.map((item, idx) => (
-        <div
+        <article
           data-category={item.category}
-          role="button"
-          tabindex="0"
-          aria-label={`Perbesar foto: ${item.title}`}
-          class={`reveal reveal-delay-${(idx % 3) + 1} hover-lift gallery-item group relative bg-slate-900 rounded-3xl overflow-hidden shadow-card border border-slate-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2`}
-          data-index={idx}
+          class={`gallery-item reveal reveal-delay-${(idx % 3) + 1} group bg-white dark:bg-surface-dark-elevated rounded-2xl overflow-hidden border border-[#DCE3D6] dark:border-slate-700 shadow-card hover-lift flex flex-col ${
+            item.featured ? 'md:col-span-2' : ''
+          }`}
         >
-          <div class="relative h-72 overflow-hidden">
-            <Image
-              src={item.image}
-              alt={item.title}
-              widths={[480, 800, 1200]}
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-          </div>
+          <button
+            type="button"
+            class="gallery-trigger text-left w-full flex flex-col h-full focus-visible:ring-2 focus-visible:ring-brand-700"
+            aria-label={`Perbesar gambar: ${item.title}`}
+          >
+            <div class={`w-full overflow-hidden bg-slate-100 dark:bg-canvas-dark ${item.featured ? 'h-64 sm:h-80' : 'h-64 sm:h-72'}`}>
+              <Image
+                src={item.image}
+                alt={item.title}
+                widths={[480, 800, 1280]}
+                sizes={item.featured ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, 100vw'}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
 
-          <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-slate-900/90 border-t border-slate-800">
-            <span class="inline-block bg-brand-700 text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-2">
-              {item.category}
-            </span>
-            <h3 class="text-lg font-extrabold text-white mb-1 group-hover:text-brand-400 transition-colors">{item.title}</h3>
-            <p class="text-xs text-slate-200 font-semibold">{item.desc}</p>
-          </div>
-        </div>
+            <div class="p-5 sm:p-6 space-y-1.5 flex-1 flex flex-col justify-between w-full">
+              <div class="space-y-1.5">
+                <span class="block text-xs font-bold text-brand-700 dark:text-brand-400">
+                  {item.categoryLabel}
+                </span>
+                <h3 class="text-[#111D2E] dark:text-white text-lg font-extrabold group-hover:text-brand-700 dark:group-hover:text-brand-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          </button>
+        </article>
       ))}
     </div>
 
@@ -126,63 +146,73 @@ const filters = [
 <!-- Lightbox Modal -->
 <div
   id="gallery-lightbox"
-  class="fixed inset-0 z-80 hidden bg-slate-950/90 flex items-center justify-center p-4"
+  class="fixed inset-0 z-80 hidden bg-slate-950/90 backdrop-blur-xs flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="lightbox-title"
 >
   <button
     id="lightbox-close"
-    class="absolute top-6 right-6 text-white hover:text-brand-400 text-2xl font-bold p-3 min-w-11 min-h-11 flex items-center justify-center bg-slate-800 rounded-full hover:rotate-90 transition-transform duration-200"
+    type="button"
+    class="absolute top-5 right-5 text-white hover:text-brand-400 min-w-11 min-h-11 flex items-center justify-center bg-surface-dark border border-slate-700 rounded-xl transition-colors"
     aria-label="Tutup foto"
   >
-    ✕
+    <Icon name="ph:x-bold" class="w-5 h-5" aria-hidden="true" />
   </button>
   <div class="max-w-4xl w-full text-center space-y-4">
     <img id="lightbox-img" src="" alt="" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl object-contain border border-slate-700" />
     <h3 id="lightbox-title" class="text-white text-xl font-extrabold"></h3>
-    <p id="lightbox-desc" class="text-slate-200 text-sm max-w-lg mx-auto font-medium"></p>
+    <p id="lightbox-desc" class="text-slate-300 text-sm max-w-lg mx-auto font-medium"></p>
   </div>
 </div>
 
 <script>
   import { openDialog, closeDialog, isDialogOpen, dialogKeydown, backdropClick } from '../utils/dialog';
 
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const galleryItems = document.querySelectorAll<HTMLElement>('.gallery-item');
+  const galleryTriggers = document.querySelectorAll<HTMLButtonElement>('.gallery-trigger');
   const lightbox = document.getElementById('gallery-lightbox');
 
-  filterBtns.forEach(btn => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.setAttribute('aria-pressed', 'false');
-        b.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
-        b.classList.add('bg-slate-100', 'text-slate-800', 'border-slate-300');
+      filterBtns.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-pressed', String(active));
+        b.classList.toggle('bg-[#111D2E]', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('border-[#111D2E]', active);
+        b.classList.toggle('dark:bg-brand-700', active);
+        b.classList.toggle('dark:border-brand-700', active);
+
+        b.classList.toggle('bg-white', !active);
+        b.classList.toggle('dark:bg-surface-dark-elevated', !active);
+        b.classList.toggle('text-slate-700', !active);
+        b.classList.toggle('dark:text-slate-200', !active);
+        b.classList.toggle('border-[#DCE3D6]', !active);
+        b.classList.toggle('dark:border-slate-700', !active);
       });
-      btn.setAttribute('aria-pressed', 'true');
-      btn.classList.remove('bg-slate-100', 'text-slate-800', 'border-slate-300');
-      btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
 
       const filter = btn.getAttribute('data-filter');
-      galleryItems.forEach(item => {
+      galleryItems.forEach((item) => {
         const cat = item.getAttribute('data-category');
-        (item as HTMLElement).style.display = filter === 'all' || cat === filter ? 'block' : 'none';
+        item.style.display = filter === 'all' || cat === filter ? 'flex' : 'none';
       });
     });
   });
 
-  function openLightbox(item: HTMLElement) {
+  function openLightbox(trigger: HTMLElement) {
     if (!lightbox) return;
-    const img = item.querySelector('img');
-    const title = item.querySelector('h3');
-    const desc = item.querySelector('p');
+    const img = trigger.querySelector('img');
+    const title = trigger.querySelector('h3');
+    const desc = trigger.querySelector('p');
 
     const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDesc = document.getElementById('lightbox-desc');
 
     if (lightboxImg && img) {
-      lightboxImg.src = img.src;
+      lightboxImg.src = img.currentSrc || img.src;
       lightboxImg.alt = title?.textContent || '';
     }
     if (lightboxTitle && title) lightboxTitle.textContent = title.textContent;
@@ -191,14 +221,8 @@ const filters = [
     openDialog(lightbox);
   }
 
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => openLightbox(item));
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openLightbox(item);
-      }
-    });
+  galleryTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => openLightbox(trigger));
   });
 
   document.getElementById('lightbox-close')?.addEventListener('click', () => {
@@ -208,6 +232,5 @@ const filters = [
   lightbox?.addEventListener('keydown', (e) => dialogKeydown(lightbox, e as KeyboardEvent));
   lightbox?.addEventListener('click', (e) => backdropClick(lightbox, e as MouseEvent));
 
-  // Guard: lightbox terbuka saat filter berubah — cukup biarkan; state ditutup oleh Escape/close.
   if (lightbox && isDialogOpen(lightbox)) closeDialog(lightbox);
 </script>

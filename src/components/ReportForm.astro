@@ -1,29 +1,24 @@
 ---
-import { config } from '../utils/config';
+import { Icon } from 'astro-icon/components';
+import { bumiProjects } from '../data/bumiGroup';
 
-// Dummy data proyek — nanti diganti dengan fetch ke REST API (mis. GET /api/projects)
-const dummyProjects = [
-  { id: 'cluster-emerald', name: 'Cluster Emerald' },
-  { id: 'cluster-sapphire', name: 'Cluster Sapphire' },
-  { id: 'cluster-diamond', name: 'Cluster Diamond' },
-];
+const clusterProjects = bumiProjects.filter((p) => p.category === 'Klaster Hunian');
 ---
 
-<div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200 text-slate-900">
-  <div class="mb-8">
-    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Formulir Laporan Keluhan</h2>
-    <p class="text-slate-600 text-sm sm:text-base font-medium mt-2 leading-relaxed">
-      Lengkapi data di bawah ini. Laporan Anda diteruskan ke tim customer service kami dan
-      ditindaklanjuti maksimal 1&times;24 jam kerja.
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card border border-[#DCE3D6] dark:border-slate-800 text-[#111D2E] dark:text-white">
+  <div class="mb-7 space-y-2 border-b border-[#DCE3D6] dark:border-slate-800 pb-5">
+    <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">Formulir Laporan Keluhan</h2>
+    <p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-relaxed">
+      Lengkapi data kavling dan klaster perumahan Anda agar tim admin terkait segera menindaklanjuti.
     </p>
   </div>
 
-  <form id="report-form" class="space-y-6" novalidate>
-    <div class="grid sm:grid-cols-2 gap-6">
+  <form id="report-form" class="space-y-5" novalidate>
+    <div class="grid sm:grid-cols-2 gap-5">
       <!-- ID Kavling -->
-      <div>
-        <label for="idKavling" class="block text-slate-900 text-sm font-bold mb-2">
-          ID Kavling <span class="text-red-600" aria-hidden="true">*</span>
+      <div class="space-y-1.5">
+        <label for="idKavling" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+          ID Kavling / Blok <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
         </label>
         <input
           type="text"
@@ -32,17 +27,17 @@ const dummyProjects = [
           required
           autocomplete="off"
           aria-describedby="error-idKavling hint-idKavling"
-          class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
-          placeholder="cth. K-12"
+          class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+          placeholder="cth. Blok B-12"
         />
-        <p id="hint-idKavling" class="text-slate-500 text-xs font-medium mt-1.5">Tertera di buku serah terima atau kartu penghuni Anda.</p>
-        <p id="error-idKavling" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
+        <p id="hint-idKavling" class="text-slate-500 dark:text-slate-400 text-xs font-medium">Tertera di berkas serah terima atau surat kavling Anda.</p>
+        <p id="error-idKavling" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
       </div>
 
       <!-- Proyek -->
-      <div>
-        <label for="proyek" class="block text-slate-900 text-sm font-bold mb-2">
-          Proyek <span class="text-red-600" aria-hidden="true">*</span>
+      <div class="space-y-1.5">
+        <label for="proyek" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+          Klaster Perumahan <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
         </label>
         <div class="relative">
           <select
@@ -51,30 +46,28 @@ const dummyProjects = [
             required
             autocomplete="off"
             aria-describedby="error-proyek"
-            class="w-full appearance-none px-4 py-3.5 pr-12 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold bg-white cursor-pointer"
+            class="w-full appearance-none px-4 py-3 pr-10 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold cursor-pointer"
           >
             <option value="" disabled selected>Pilih proyek perumahan</option>
-            {dummyProjects.map((project) => (
-              <option value={project.id}>{project.name}</option>
+            {clusterProjects.map((project) => (
+              <option value={project.adminPhone} data-project-name={project.name}>
+                {project.shortName} ({project.areaLabel})
+              </option>
             ))}
           </select>
-          <svg
-            class="w-5 h-5 text-slate-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <Icon
+            name="ph:caret-down-bold"
+            class="w-4 h-4 text-slate-600 dark:text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
             aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-          </svg>
+          />
         </div>
-        <p id="error-proyek" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
+        <p id="error-proyek" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
       </div>
 
       <!-- Nama Lengkap -->
-      <div>
-        <label for="namaLengkap" class="block text-slate-900 text-sm font-bold mb-2">
-          Nama Lengkap <span class="text-red-600" aria-hidden="true">*</span>
+      <div class="space-y-1.5">
+        <label for="namaLengkap" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+          Nama Lengkap <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
         </label>
         <input
           type="text"
@@ -83,16 +76,16 @@ const dummyProjects = [
           required
           autocomplete="name"
           aria-describedby="error-namaLengkap"
-          class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
-          placeholder="Nama sesuai buku serah terima"
+          class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+          placeholder="Nama sesuai data pemilik"
         />
-        <p id="error-namaLengkap" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
+        <p id="error-namaLengkap" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
       </div>
 
       <!-- No. HP / WhatsApp -->
-      <div>
-        <label for="nomorWhatsApp" class="block text-slate-900 text-sm font-bold mb-2">
-          No. HP / WhatsApp <span class="text-red-600" aria-hidden="true">*</span>
+      <div class="space-y-1.5">
+        <label for="nomorWhatsApp" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+          No. HP / WhatsApp <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
         </label>
         <input
           type="tel"
@@ -102,17 +95,17 @@ const dummyProjects = [
           autocomplete="tel"
           inputmode="tel"
           aria-describedby="error-nomorWhatsApp"
-          class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500"
-          placeholder="Contoh: 08123456789"
+          class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+          placeholder="Contoh: 0823xxxxxxxx"
         />
-        <p id="error-nomorWhatsApp" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
+        <p id="error-nomorWhatsApp" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
       </div>
     </div>
 
-    <!-- Keluhan -->
-    <div>
-      <label for="keluhan" class="block text-slate-900 text-sm font-bold mb-2">
-        Detail Keluhan <span class="text-red-600" aria-hidden="true">*</span>
+    <!-- Detail Keluhan -->
+    <div class="space-y-1.5">
+      <label for="keluhan" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+        Detail Keluhan <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
       </label>
       <textarea
         id="keluhan"
@@ -120,48 +113,41 @@ const dummyProjects = [
         rows="5"
         required
         aria-describedby="error-keluhan"
-        class="w-full px-4 py-3.5 border-2 border-slate-300 rounded-xl focus:outline-none focus:border-brand-700 transition-colors text-slate-900 font-semibold placeholder:text-slate-500 resize-none"
-        placeholder="Jelaskan keluhan Anda, misalnya kerusakan bangunan, kebocoran, drainase, atau fasilitas umum..."
+        class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400 resize-none"
+        placeholder="Jelaskan keluhan Anda, misalnya kondisi bangunan, saluran air, atau fasilitas lingkungan klaster..."
       ></textarea>
-      <p id="error-keluhan" class="text-red-600 text-sm font-bold mt-1 hidden" role="alert"></p>
+      <p id="error-keluhan" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
     </div>
 
-    <!-- Submit Button -->
     <button
       type="submit"
       id="report-submit-btn"
-      class="w-full bg-brand-700 hover:bg-brand-800 text-white px-6 py-4 rounded-xl font-extrabold shadow-md active:scale-[0.99] transition-all duration-200 min-h-[50px] disabled:opacity-50 disabled:cursor-not-allowed"
+      class="w-full bg-brand-700 hover:bg-brand-800 text-white px-6 py-4 rounded-xl font-bold shadow-sm active:scale-[0.99] transition-all duration-200 min-h-12 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2.5"
     >
-      Kirim Laporan
+      <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+      <span>Kirim Laporan</span>
     </button>
 
-    <!-- Success Message: nomor referensi + tautan WhatsApp (tahan popup blocker) -->
-    <div id="report-success" class="report-success-pop hidden mt-6 p-5 bg-brand-50 border border-brand-200 rounded-2xl">
+    <div id="report-success" class="report-success-pop hidden mt-4 p-5 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800 rounded-2xl">
       <div class="flex items-start gap-3">
-        <span class="w-8 h-8 rounded-xl bg-brand-700 text-white flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </span>
-        <div class="min-w-0">
-          <p class="text-brand-900 font-extrabold">Laporan Anda Siap Dikirim</p>
-          <p class="text-brand-800 text-sm font-semibold mt-1">
-            WhatsApp akan terbuka otomatis untuk meneruskan laporan ke tim customer service.
-            Jika tidak terbuka, tekan tombol di bawah. Simpan nomor referensi berikut agar
-            laporan mudah dilacak.
+        <Icon name="ph:check-circle-fill" class="w-6 h-6 text-brand-700 dark:text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+        <div class="min-w-0 flex-1">
+          <p class="text-brand-900 dark:text-brand-200 font-extrabold text-sm">Laporan Anda Siap Dikirim</p>
+          <p class="text-brand-800 dark:text-brand-300 text-xs sm:text-sm font-medium mt-1">
+            WhatsApp akan terbuka otomatis ke admin klaster terkait. Simpan nomor referensi berikut untuk pelacakan.
           </p>
-          <div class="mt-3 flex items-center justify-between gap-3 border border-dashed border-brand-600/50 bg-white/70 rounded-xl px-4 py-2.5">
-            <span class="text-xs font-extrabold uppercase tracking-wider text-brand-700">Nomor Referensi</span>
-            <span id="ticket-number" class="font-mono font-extrabold text-brand-900 text-sm whitespace-nowrap"></span>
+          <div class="mt-3 flex items-center justify-between gap-3 border border-dashed border-brand-600/50 bg-white dark:bg-canvas-dark rounded-xl px-4 py-2.5">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-400">Nomor Referensi</span>
+            <span id="ticket-number" class="font-mono font-extrabold text-brand-900 dark:text-white text-sm whitespace-nowrap"></span>
           </div>
           <a
             id="report-wa-link"
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-3 inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800 text-white text-sm font-bold px-5 py-3 rounded-xl min-h-11 transition-colors"
+            class="mt-3 inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl min-h-11 transition-colors"
           >
-            Buka WhatsApp Sekarang
+            <span>Buka WhatsApp Sekarang</span>
           </a>
         </div>
       </div>
@@ -171,13 +157,13 @@ const dummyProjects = [
 
 <script>
   import { validateName, validateWhatsApp } from '../utils/validation';
-  import { config, whatsappLink } from '../utils/config';
+  import { whatsappLink } from '../utils/config';
 
-  const form = document.getElementById('report-form') as HTMLFormElement;
-  const submitBtn = document.getElementById('report-submit-btn') as HTMLButtonElement;
+  const form = document.getElementById('report-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('report-submit-btn') as HTMLButtonElement | null;
   const successMessage = document.getElementById('report-success');
   const ticketNumber = document.getElementById('ticket-number');
-  const reportWaLink = document.getElementById('report-wa-link') as HTMLAnchorElement;
+  const reportWaLink = document.getElementById('report-wa-link') as HTMLAnchorElement | null;
 
   const idKavlingInput = document.getElementById('idKavling') as HTMLInputElement;
   const proyekSelect = document.getElementById('proyek') as HTMLSelectElement;
@@ -232,13 +218,13 @@ const dummyProjects = [
 
   const validators: Record<string, (value: string) => string | null> = {
     idKavling: (value) => (value.trim() ? null : 'ID Kavling wajib diisi'),
-    proyek: (value) => (value ? null : 'Silakan pilih proyek perumahan'),
+    proyek: (value) => (value ? null : 'Silakan pilih klaster perumahan'),
     namaLengkap: (value) => validateName(value),
     nomorWhatsApp: (value) => validateWhatsApp(value),
     keluhan: (value) => {
       const trimmed = value.trim();
       if (!trimmed) return 'Detail keluhan wajib diisi';
-      if (trimmed.length < 10) return 'Jelaskan keluhan minimal 10 karakter agar kami memahami permasalahan Anda';
+      if (trimmed.length < 10) return 'Jelaskan keluhan minimal 10 karakter agar tim kami memahami kendala Anda';
       return null;
     },
   };
@@ -267,28 +253,27 @@ const dummyProjects = [
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-
     successMessage?.classList.add('hidden');
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Menyiapkan Laporan...';
+    if (submitBtn) submitBtn.disabled = true;
 
-    // TODO: saat REST API siap, kirim formData ke server dan pakai nomor tiket dari respons.
     const reference = generateReferenceNumber();
+    const selectedOpt = proyekSelect.selectedOptions[0];
+    const projectName = selectedOpt?.getAttribute('data-project-name') || selectedOpt?.textContent || proyekSelect.value;
+    const targetAdminPhone = proyekSelect.value;
+
     const formData = {
       idKavling: idKavlingInput.value.trim(),
-      proyek: proyekSelect.selectedOptions[0]?.textContent || proyekSelect.value,
+      proyek: projectName,
       namaLengkap: namaLengkapInput.value.trim(),
       nomorWhatsApp: nomorWhatsAppInput.value.trim(),
       keluhan: keluhanInput.value.trim(),
     };
 
-    const message = `Halo Bumi Group, saya ingin melaporkan keluhan perumahan.\n\nNo. Referensi: ${reference}\nID Kavling: ${formData.idKavling}\nProyek: ${formData.proyek}\nNama: ${formData.namaLengkap}\nNo. HP: ${formData.nomorWhatsApp}\n\nDetail Keluhan:\n${formData.keluhan}`;
-    const waUrl = whatsappLink(message);
+    const message = `Halo Admin ${formData.proyek}, saya ingin melaporkan keluhan perumahan.\n\nNo. Referensi: ${reference}\nID Kavling: ${formData.idKavling}\nKlaster: ${formData.proyek}\nNama: ${formData.namaLengkap}\nNo. HP: ${formData.nomorWhatsApp}\n\nDetail Keluhan:\n${formData.keluhan}`;
+    const waUrl = whatsappLink(message, targetAdminPhone);
 
     if (ticketNumber) ticketNumber.textContent = reference;
     if (reportWaLink) reportWaLink.href = waUrl;
@@ -302,8 +287,7 @@ const dummyProjects = [
       inputs[field].removeAttribute('aria-invalid');
     });
 
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Kirim Laporan';
+    if (submitBtn) submitBtn.disabled = false;
   });
 
   (['idKavling', 'namaLengkap', 'nomorWhatsApp', 'keluhan'] as const).forEach((field) => {
@@ -314,7 +298,6 @@ const dummyProjects = [
 </script>
 
 <style>
-  /* Animasi muncul saat panel referensi ditampilkan; mati untuk pengguna reduced-motion */
   @keyframes ticket-in {
     from {
       opacity: 0;
@@ -327,7 +310,7 @@ const dummyProjects = [
   }
 
   .report-success-pop {
-    animation: ticket-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: ticket-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,350 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { whatsappLink } from '../utils/config';
+import tipe50Img from '../assets/images/cluster_tlanakan_50.jpg';
+import tipe36Img from '../assets/images/tipe_36.png';
+import tipe45Img from '../assets/images/tipe_45.png';
+import tipe60Img from '../assets/images/tipe_60.png';
+
+const unitTypes = [
+  {
+    id: 'tipe-50',
+    tabLabel: 'Tipe 50',
+    title: 'Rumah Tipe 50 Modern Minimalis',
+    locationTag: 'Bumi Tlanakan Residence & Klaster',
+    adminPhone: '0823-3044-3131',
+    image: tipe50Img,
+    description:
+      'Konsep hunian modern minimalis dengan fasad bersih, carport lega, dan tata ruang fungsional untuk keluarga muda maupun hunian jangka panjang.',
+    highlights: [
+      'Fasad modern minimalis dengan aksen kayu hangat',
+      'Ruang keluarga lapang dan sirkulasi udara optimal',
+      'Carport lega dan area taman depan tertata',
+      'Berlokasi di jalur strategis Kecamatan Tlanakan',
+    ],
+    specs: {
+      foundation: 'Batu Kali & Beton Bertulang',
+      wall: 'Bata / Hebel Diplester, Aci, & Cat Weatherproof',
+      roof: 'Rangka Baja Ringan & Penutup Atap Minimalis',
+      sanitary: 'Kloset Duduk & Shower Standar SNI',
+      electricity: 'Instalasi Listrik Standar PLN (1.300 - 2.200 Watt)',
+      water: 'Sumber Air Bersih Siap Pakai',
+    },
+  },
+  {
+    id: 'klaster-kompak',
+    tabLabel: 'Tipe 36',
+    title: 'Unit Klaster Kompak Minimalis',
+    locationTag: 'Kangenan, Bugih & Pademawu',
+    adminPhone: '0823-3642-4142',
+    image: tipe36Img,
+    description:
+      'Pilihan hunian efisien dan mudah dirawat bagi pasangan muda atau keluarga kecil yang mengutamakan kenyamanan lingkungan klaster.',
+    highlights: [
+      '2 Kamar Tidur dan 1 Kamar Mandi fungsional',
+      'Tata letak ruang tamu menyatu dengan ruang makan',
+      'Taman depan asri dan carport kendaraan pribadi',
+      'Lingkungan klaster tenang dan mudah diakses',
+    ],
+    specs: {
+      foundation: 'Batu Kali & Sloof Beton Bertulang',
+      wall: 'Bata / Hebel Diplester & Dicat Rapi',
+      roof: 'Rangka Baja Ringan & Genteng Standar Cluster',
+      sanitary: 'Kloset Duduk & Keran Air Bersih',
+      electricity: '1.300 Watt Standar Residensial',
+      water: 'Sumber Air Bersih Terintegrasi',
+    },
+  },
+  {
+    id: 'klaster-keluarga',
+    tabLabel: 'Tipe 45',
+    title: 'Unit Klaster Keluarga Berkembang',
+    locationTag: 'Area Kangenan & Pademawu',
+    adminPhone: '0813-3370-7033',
+    image: tipe45Img,
+    description:
+      'Memberikan ruang gerak lebih lega untuk aktivitas keluarga sehari-hari dengan pencahayaan alami dan proporsi fasad yang seimbang.',
+    highlights: [
+      'Ruang keluarga luas dan area dapur terpisah rapi',
+      'Bukaan jendela lebar untuk cahaya alami maksimal',
+      'Area belakang fleksibel untuk pengembangan ruang',
+      'Akses jalan lingkungan nyaman untuk kendaraan',
+    ],
+    specs: {
+      foundation: 'Beton Bertulang Standar Konstruksi Klaster',
+      wall: 'Pasangan Bata / Hebel Finis Cat Eksterior-Interior',
+      roof: 'Rangka Baja Ringan & Penutup Atap Kokoh',
+      sanitary: 'Sanitari Lengkap & Instalasi Air Bersih',
+      electricity: '1.300 - 2.200 Watt',
+      water: 'Sumber Air Bersih Siap Huni',
+    },
+  },
+  {
+    id: 'residensial-2-lantai',
+    tabLabel: 'Tipe 60',
+    title: 'Unit Residensial Luas & Komersial',
+    locationTag: 'Unit Pilihan Portofolio Bumi Group',
+    adminPhone: '0823-3044-3131',
+    image: tipe60Img,
+    description:
+      'Opsi hunian berukuran lebih luas untuk keluarga besar atau kebutuhan investasi properti jangka panjang di kawasan berkembang Pamekasan.',
+    highlights: [
+      'Kapasitas kamar lebih banyak dan privasi terjaga',
+      'Area carport luas dan ruang serbaguna keluarga',
+      'Fasad modern tegas dengan bukaan kaca lebar',
+      'Nilai investasi properti strategis di Pamekasan',
+    ],
+    specs: {
+      foundation: 'Struktur Beton Bertulang Bertingkat',
+      wall: 'Dinding Bata Double Wall Finis Halus',
+      roof: 'Rangka Baja Ringan & Atap Bergaransi',
+      sanitary: 'Sanitari Lengkap & Instalasi Water Heater Ready',
+      electricity: '2.200 - 3.500 Watt',
+      water: 'Sistem Air Bersih & Tandon Siap Pakai',
+    },
+  },
+];
+
+const firstUnit = unitTypes[0];
+---
+
+<section id="tipe-unit" class="py-20 md:py-28 bg-canvas-muted dark:bg-surface-dark border-y border-[#DCE3D6] dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- Vertical Header -->
+    <div class="reveal max-w-2xl mb-10 space-y-3">
+      <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Pilihan Tipe Hunian Klaster &amp; Residensial
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
+        Menyediakan variasi luas bangunan, mulai dari unit klaster kompak hingga perencanaan rumah Tipe 50 di kawasan Tlanakan. Hubungi admin untuk daftar harga dan ketersediaan kavling terkini.
+      </p>
+    </div>
+
+    <!-- Unit Type Tabs -->
+    <div class="reveal flex flex-wrap gap-2.5 mb-8" role="tablist" aria-label="Pilih tipe unit rumah">
+      {unitTypes.map((unit, idx) => (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={idx === 0 ? 'true' : 'false'}
+          data-unit-id={unit.id}
+          class={`unit-tab-btn min-h-11 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold border transition-all whitespace-nowrap ${
+            idx === 0
+              ? 'bg-[#111D2E] text-white border-[#111D2E] dark:bg-brand-700 dark:border-brand-700'
+              : 'bg-white dark:bg-surface-dark-elevated text-slate-700 dark:text-slate-200 border-[#DCE3D6] dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-400'
+          }`}
+        >
+          {unit.tabLabel}
+        </button>
+      ))}
+    </div>
+
+    <!-- Active Unit Panel -->
+    <div class="reveal bg-white dark:bg-surface-dark-elevated rounded-2xl border border-[#DCE3D6] dark:border-slate-700 shadow-card overflow-hidden">
+      {unitTypes.map((unit, idx) => (
+        <div
+          id={`unit-panel-${unit.id}`}
+          role="tabpanel"
+          class={`unit-panel grid grid-cols-1 lg:grid-cols-12 items-stretch ${idx === 0 ? '' : 'hidden'}`}
+        >
+          <!-- Image Column -->
+          <div class="lg:col-span-6 bg-slate-100 dark:bg-canvas-dark relative">
+            <Image
+              src={unit.image}
+              alt={`Ilustrasi fasad ${unit.title}`}
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading={idx === 0 ? 'eager' : 'lazy'}
+              class="w-full h-72 sm:h-96 lg:h-full object-cover"
+            />
+          </div>
+
+          <!-- Content Column -->
+          <div class="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+            <div class="space-y-5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-800 dark:text-brand-300 text-xs font-bold">
+                <Icon name="ph:map-pin-bold" class="w-3.5 h-3.5" aria-hidden="true" />
+                <span>{unit.locationTag}</span>
+              </div>
+
+              <div class="space-y-2.5">
+                <h3 class="text-[#111D2E] dark:text-white text-2xl sm:text-3xl font-extrabold">
+                  {unit.title}
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed">
+                  {unit.description}
+                </p>
+              </div>
+
+              <ul class="space-y-2.5 pt-2">
+                {unit.highlights.map((item) => (
+                  <li class="flex items-start gap-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-700 dark:text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-[#DCE3D6] dark:border-slate-700 flex flex-wrap gap-3">
+              <a
+                href={whatsappLink(
+                  `Halo Admin Bumi Group, boleh minta info harga, siteplan, dan ketersediaan unit ${unit.title} (${unit.locationTag})?`,
+                  unit.adminPhone
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2.5 bg-brand-700 hover:bg-brand-800 text-white px-6 py-3.5 rounded-xl text-sm font-bold shadow-sm active:scale-[0.98] transition-all min-h-12 whitespace-nowrap"
+              >
+                <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+                <span>Tanya Harga &amp; Siteplan</span>
+              </a>
+
+              <button
+                type="button"
+                data-spec-modal-target={unit.id}
+                class="spec-modal-btn inline-flex items-center justify-center gap-2 bg-canvas-light dark:bg-canvas-dark hover:bg-canvas-muted dark:hover:bg-slate-800 border border-[#DCE3D6] dark:border-slate-700 text-[#111D2E] dark:text-white px-5 py-3.5 rounded-xl text-sm font-bold active:scale-[0.98] transition-all min-h-12 whitespace-nowrap"
+              >
+                <Icon name="ph:clipboard-text-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400 shrink-0" aria-hidden="true" />
+                <span>Spesifikasi Konstruksi</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Modals Spesifikasi Konstruksi -->
+{unitTypes.map((unit) => (
+  <div
+    id={`modal-${unit.id}`}
+    class="spec-modal fixed inset-0 z-70 hidden bg-slate-950/75 backdrop-blur-xs p-4 overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={`modal-title-${unit.id}`}
+  >
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="bg-white dark:bg-surface-dark-elevated rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-[#DCE3D6] dark:border-slate-700 text-[#111D2E] dark:text-white">
+        <button
+          type="button"
+          data-spec-modal-close={`modal-${unit.id}`}
+          class="spec-modal-close absolute top-5 right-5 text-slate-600 dark:text-slate-300 hover:text-[#111D2E] dark:hover:text-white min-w-11 min-h-11 flex items-center justify-center rounded-xl bg-canvas-muted dark:bg-slate-800 transition-colors"
+          aria-label="Tutup modal spesifikasi"
+        >
+          <Icon name="ph:x-bold" class="w-5 h-5" aria-hidden="true" />
+        </button>
+
+        <div class="space-y-1.5 pr-12 mb-6">
+          <p class="text-xs font-bold text-brand-700 dark:text-brand-400">{unit.locationTag}</p>
+          <h3 class="text-xl sm:text-2xl font-extrabold" id={`modal-title-${unit.id}`}>{unit.title}</h3>
+          <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
+            Gambaran spesifikasi material standar hunian klaster Bumi Group. Detail teknis per proyek dapat dikonfirmasi langsung kepada admin.
+          </p>
+        </div>
+
+        <dl class="space-y-3 text-sm divide-y divide-[#DCE3D6] dark:divide-slate-700">
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Pondasi</dt>
+            <dd class="font-bold text-right">{unit.specs.foundation}</dd>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Dinding</dt>
+            <dd class="font-bold text-right">{unit.specs.wall}</dd>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Atap</dt>
+            <dd class="font-bold text-right">{unit.specs.roof}</dd>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Sanitari</dt>
+            <dd class="font-bold text-right">{unit.specs.sanitary}</dd>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Listrik</dt>
+            <dd class="font-bold text-right">{unit.specs.electricity}</dd>
+          </div>
+          <div class="pt-3 flex justify-between gap-4">
+            <dt class="font-bold text-slate-600 dark:text-slate-400">Air Bersih</dt>
+            <dd class="font-bold text-right">{unit.specs.water}</dd>
+          </div>
+        </dl>
+
+        <div class="mt-7 pt-5 border-t border-[#DCE3D6] dark:border-slate-700">
+          <a
+            href={whatsappLink(
+              `Halo Admin Bumi Group, saya ingin cek spesifikasi lengkap dan brosur untuk ${unit.title}.`,
+              unit.adminPhone
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full bg-brand-700 hover:bg-brand-800 text-white text-center py-3.5 px-5 rounded-xl font-bold transition-colors min-h-12 inline-flex items-center justify-center gap-2"
+          >
+            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
+            <span>Minta Brosur &amp; Pricelist Resmi</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
+<script>
+  import { openDialog, closeDialog, isDialogOpen, dialogKeydown, backdropClick } from '../utils/dialog';
+
+  const unitTabBtns = document.querySelectorAll<HTMLButtonElement>('.unit-tab-btn');
+  const unitPanels = document.querySelectorAll<HTMLElement>('.unit-panel');
+
+  unitTabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.unitId;
+      unitTabBtns.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-selected', String(active));
+        b.classList.toggle('bg-[#111D2E]', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('border-[#111D2E]', active);
+        b.classList.toggle('dark:bg-brand-700', active);
+        b.classList.toggle('dark:border-brand-700', active);
+
+        b.classList.toggle('bg-white', !active);
+        b.classList.toggle('dark:bg-surface-dark-elevated', !active);
+        b.classList.toggle('text-slate-700', !active);
+        b.classList.toggle('dark:text-slate-200', !active);
+        b.classList.toggle('border-[#DCE3D6]', !active);
+        b.classList.toggle('dark:border-slate-700', !active);
+      });
+
+      unitPanels.forEach((panel) => {
+        panel.classList.toggle('hidden', panel.id !== `unit-panel-${targetId}`);
+      });
+    });
+  });
+
+  const openBtns = document.querySelectorAll<HTMLButtonElement>('.spec-modal-btn');
+  const closeBtns = document.querySelectorAll<HTMLButtonElement>('.spec-modal-close');
+
+  openBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-spec-modal-target');
+      const modal = document.getElementById(`modal-${targetId}`);
+      if (modal && !isDialogOpen(modal)) openDialog(modal);
+    });
+  });
+
+  closeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const modal = document.getElementById(btn.getAttribute('data-spec-modal-close') || '');
+      if (modal) closeDialog(modal);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.spec-modal').forEach((modal) => {
+    modal.addEventListener('keydown', (e) => dialogKeydown(modal, e as KeyboardEvent));
+    modal.addEventListener('click', (e) => backdropClick(modal, e as MouseEvent));
+  });
+</script>

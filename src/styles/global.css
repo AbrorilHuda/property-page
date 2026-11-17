@@ -1,18 +1,26 @@
 @import "tailwindcss";
 
-/* Token warna brand Bumi Group — dipetakan ke utilitas Tailwind (bg-brand-*, text-brand-*, dst.) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Token warna brand PT Bumi Griya Madani / Bumi Group */
 @theme {
   --color-brand-50: #F4F9EC;
   --color-brand-100: #E4F0D3;
   --color-brand-200: #C9E2A9;
-  --color-brand-300: #A8D17D;
+  --color-brand-300: #A5CE78;
   --color-brand-400: #8BC34A;
   --color-brand-500: #6BA84F;
-  --color-brand-600: #5A9741;
-  --color-brand-700: #4E8B3E;
-  --color-brand-800: #427635;
-  --color-brand-900: #37612C;
-  --color-brand-950: #1B300F;
+  --color-brand-600: #55913D;
+  --color-brand-700: #447C33;
+  --color-brand-800: #366428;
+  --color-brand-900: #294D1F;
+  --color-brand-950: #172B11;
+
+  --color-canvas-light: #F7F8F5;
+  --color-canvas-muted: #EEF2EA;
+  --color-canvas-dark: #0B121C;
+  --color-surface-dark: #111B29;
+  --color-surface-dark-elevated: #172436;
 }
 
 @layer base {
@@ -24,7 +32,6 @@
     scroll-padding-top: 5rem;
   }
 
-  /* Scroll halus hanya bagi pengguna yang nyaman dengan gerakan */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
@@ -33,11 +40,16 @@
 
   body {
     margin: 0;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #0F172A;
-    background-color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    background-color: #F7F8F5;
+    color: #111D2E;
+  }
+
+  html.dark body {
+    background-color: #0B121C;
+    color: #F1F5F2;
   }
 
   img {
@@ -46,27 +58,10 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
-    line-height: 1.25;
+    font-family: 'Outfit Variable', 'Outfit', sans-serif;
+    line-height: 1.15;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #0F172A;
-  }
-
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.85rem; }
-  h3 { font-size: 1.4rem; }
-
-  @media (min-width: 768px) {
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.35rem; }
-    h3 { font-size: 1.6rem; }
-  }
-
-  @media (min-width: 1024px) {
-    h1 { font-size: 3.75rem; }
-    h2 { font-size: 2.65rem; }
-    h3 { font-size: 1.85rem; }
+    letter-spacing: -0.025em;
   }
 
   a {
@@ -85,17 +80,25 @@
     outline: 2px solid var(--color-brand-700);
     outline-offset: 2px;
   }
+
+  html.dark :focus-visible {
+    outline-color: var(--color-brand-400);
+  }
 }
 
 .shadow-card {
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 12px 32px -8px rgba(17, 29, 46, 0.08), 0 4px 12px -4px rgba(17, 29, 46, 0.04);
 }
 
-/* Scroll-Reveal: hanya aktif bila JS berjalan (progressive enhancement — tanpa JS konten tetap terlihat) */
+html.dark .shadow-card {
+  box-shadow: 0 14px 36px -8px rgba(5, 9, 15, 0.45), 0 4px 12px -4px rgba(5, 9, 15, 0.3);
+}
+
+/* Scroll-Reveal: progressive enhancement, tetap terlihat jika JS tidak aktif */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .js .reveal.active {
@@ -103,36 +106,34 @@
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
 
-/* Interactive Hover Physics */
+/* Tactile Architectural Hover */
 .hover-lift {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
 
 .hover-lift:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+  transform: translateY(-4px);
 }
 
 .hover-lift:active {
-  transform: translateY(-2px) scale(0.99);
+  transform: translateY(-1px) scale(0.99);
 }
 
-/* Reduced Motion Safety */
 @media (prefers-reduced-motion: reduce) {
   .js .reveal {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .hover-lift:hover {
+  .hover-lift:hover,
+  .hover-lift:active {
     transform: none !important;
   }
-  /* Titik "online" berkedip abadi dihentikan bagi pengguna sensitif gerakan */
   .animate-ping {
     animation: none !important;
     opacity: 0.6;

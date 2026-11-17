@@ -1,77 +1,69 @@
 ---
-import { whatsappLink } from '../utils/config';
 import { Image } from 'astro:assets';
-import WhatsAppIcon from './icons/WhatsAppIcon.astro';
-import heroImg from '../assets/images/hero_serene_house.png';
+import { Icon } from 'astro-icon/components';
+import { whatsappLink } from '../utils/config';
+import heroStreetImg from '../assets/images/cluster_street_minimalist.jpg';
 ---
 
-<section id="hero" class="relative min-h-dvh flex items-center pt-24 pb-16 lg:py-32 bg-slate-950 overflow-hidden text-white">
-  <!-- Serene Background Photo -->
-  <div class="absolute inset-0 z-0">
-    <Image
-      src={heroImg}
-      alt="Perumahan Asri dan Modern Bumi Group"
-      widths={[768, 1280, 1920]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      class="w-full h-full object-cover object-center brightness-[0.45] transition-transform duration-1000 ease-out scale-105"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-slate-950/20"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50"></div>
-  </div>
+<section id="hero" class="relative min-h-[100dvh] flex items-center pt-24 pb-12 lg:pb-16 bg-canvas-light dark:bg-canvas-dark overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-  <div class="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 w-full">
-    <div class="max-w-3xl space-y-8">
+      <!-- Left Architectural Copy (strictly max 4 text elements) -->
+      <div class="lg:col-span-6 space-y-6">
+        <p class="reveal active text-xs font-bold uppercase tracking-[0.16em] text-brand-700 dark:text-brand-400">
+          PT Bumi Griya Madani · Pamekasan
+        </p>
 
-      <!-- Main Headline (Reveal Animation) -->
-      <h1 class="reveal active text-white text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[1.12] tracking-tight">
-        Hunian Asri, Tenang & Modern <br class="hidden sm:block" />
-        <span class="text-brand-400">untuk Masa Depan Keluarga</span>
-      </h1>
+        <h1 class="reveal active reveal-delay-1 text-[#111D2E] dark:text-white text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight">
+          Hunian Modern Minimalis
+          <span class="block text-brand-700 dark:text-brand-400">di Klaster Strategis Pamekasan</span>
+        </h1>
 
-      <!-- Subheadline (Reveal Animation) -->
-      <p class="reveal active reveal-delay-1 text-slate-100 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
-        Wujudkan rumah impian berarsitektur modern di lingkungan asri, tenang, dan aman 24 jam bersama <strong class="text-white">Bumi Group</strong>.
-      </p>
+        <p class="reveal active reveal-delay-2 text-slate-600 dark:text-slate-300 text-base sm:text-lg font-medium leading-relaxed max-w-xl">
+          Kawasan hunian klaster tertata dengan tata ruang efisien dari Bumi Group di titik strategis Pamekasan, Madura.
+        </p>
 
-      <!-- CTA Buttons (Reveal Animation) -->
-      <div class="reveal active reveal-delay-2 pt-2 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
-        <a
-          href={whatsappLink('Halo Sales Bumi Group, saya tertarik dengan informasi perumahan asri & modern.')}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 bg-brand-700 hover:bg-brand-800 text-white px-8 py-4 rounded-xl text-base font-bold shadow-lg active:scale-[0.98] transition-all duration-200 min-h-[52px]"
-        >
-          <WhatsAppIcon class="w-5 h-5 fill-current" />
-          <span>Konsultasi Sales WA</span>
-        </a>
+        <div class="reveal active reveal-delay-3 pt-2 flex flex-wrap gap-3.5 items-center">
+          <a
+            href={whatsappLink('Halo Admin Bumi Group Pamekasan, saya ingin konsultasi dan info unit klaster yang tersedia.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 bg-brand-700 hover:bg-brand-800 text-white px-6 py-3.5 rounded-xl text-sm sm:text-base font-bold shadow-sm active:scale-[0.98] transition-all duration-200 min-h-12 whitespace-nowrap"
+          >
+            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+            <span>Konsultasi WhatsApp</span>
+          </a>
 
-        <a
-          href="#property-types"
-          class="inline-flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-white px-7 py-4 rounded-xl text-base font-bold transition-all duration-200 min-h-[52px]"
-        >
-          <span>Lihat Pilihan Tipe Unit</span>
-          <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </a>
+          <a
+            href="#proyek"
+            class="inline-flex items-center justify-center gap-2 bg-white dark:bg-surface-dark hover:bg-canvas-muted dark:hover:bg-surface-dark-elevated border border-[#DCE3D6] dark:border-slate-700 text-[#111D2E] dark:text-white px-6 py-3.5 rounded-xl text-sm sm:text-base font-bold active:scale-[0.98] transition-all duration-200 min-h-12 whitespace-nowrap"
+          >
+            <span>Lihat Proyek</span>
+            <Icon name="ph:arrow-down-right-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400 shrink-0" aria-hidden="true" />
+          </a>
+        </div>
       </div>
 
-      <!-- Minimal Highlights Strip -->
-      <div class="reveal active reveal-delay-3 pt-8 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm font-semibold text-slate-200">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          <span>100% Legalitas SHM & IMB</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          <span>Lingkungan Asri & Bebas Banjir</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          <span>Keamanan One Gate System 24/7</span>
-        </div>
+      <!-- Right Architectural Visual (No overlaid pills/tags) -->
+      <div class="lg:col-span-6 reveal active reveal-delay-2">
+        <figure class="space-y-3">
+          <div class="rounded-2xl overflow-hidden border border-[#DCE3D6] dark:border-slate-800 shadow-card bg-white dark:bg-surface-dark">
+            <Image
+              src={heroStreetImg}
+              alt="Kawasan hunian klaster modern minimalis Bumi Group di Pamekasan"
+              widths={[640, 960, 1440]}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="eager"
+              fetchpriority="high"
+              class="w-full aspect-[4/3] lg:aspect-[16/12] object-cover"
+            />
+          </div>
+          <figcaption class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">
+            <span>Ilustrasi kawasan klaster modern minimalis Bumi Group</span>
+            <span class="text-brand-700 dark:text-brand-400 font-bold">Kangenan · Tlanakan · Pademawu · Bugih</span>
+          </figcaption>
+        </figure>
       </div>
 
     </div>

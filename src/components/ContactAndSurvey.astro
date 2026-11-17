@@ -1,0 +1,333 @@
+---
+import { Icon } from 'astro-icon/components';
+import { bumiProjects, companyProfile, officialAdmins } from '../data/bumiGroup';
+import { whatsappLink } from '../utils/config';
+---
+
+<section id="kontak" class="py-20 md:py-28 bg-canvas-light dark:bg-canvas-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="reveal max-w-2xl mb-12 space-y-3">
+      <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Jadwalkan Survey &amp; Hubungi Admin Resmi
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
+        Pilih lokasi proyek Bumi Group yang Anda minati untuk terhubung langsung dengan admin pemasaran area terkait.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+      <!-- Left: Official Multi-Admin Directory -->
+      <div class="reveal lg:col-span-5 space-y-6">
+        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 sm:p-7 border border-[#DCE3D6] dark:border-slate-800 shadow-card space-y-5">
+          <div class="space-y-1">
+            <h3 class="text-[#111D2E] dark:text-white text-lg font-extrabold">
+              {companyProfile.legalName}
+            </h3>
+            <p class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400">
+              {companyProfile.headOfficeAddress}
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-2 border-t border-[#DCE3D6] dark:border-slate-800 text-sm font-semibold">
+            <a
+              href={`mailto:${companyProfile.email}`}
+              class="flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
+            >
+              <Icon name="ph:envelope-simple-bold" class="w-5 h-5 text-brand-700 dark:text-brand-400 shrink-0" aria-hidden="true" />
+              <span>{companyProfile.email}</span>
+            </a>
+            <a
+              href={companyProfile.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
+            >
+              <Icon name="ph:instagram-logo-bold" class="w-5 h-5 text-brand-700 dark:text-brand-400 shrink-0" aria-hidden="true" />
+              <span>{companyProfile.instagramHandle}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 sm:p-7 border border-[#DCE3D6] dark:border-slate-800 shadow-card space-y-4">
+          <h3 class="text-[#111D2E] dark:text-white text-base font-extrabold">
+            Kontak Admin Pemasaran per Area
+          </h3>
+          <ul class="divide-y divide-[#DCE3D6] dark:divide-slate-800">
+            {officialAdmins.map((admin) => (
+              <li class="py-3 first:pt-0 last:pb-0 flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="text-xs font-bold text-slate-500 dark:text-slate-400">{admin.label}</div>
+                  <div class="text-sm font-extrabold text-[#111D2E] dark:text-white">{admin.phoneDisplay}</div>
+                </div>
+                <a
+                  href={whatsappLink(`Halo ${admin.label}, saya ingin bertanya mengenai perumahan Bumi Group di Pamekasan.`, admin.phoneDisplay)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-50 dark:bg-brand-950/70 hover:bg-brand-700 text-brand-800 dark:text-brand-300 hover:text-white border border-brand-200 dark:border-brand-800 text-xs font-bold transition-colors min-h-10 shrink-0 whitespace-nowrap"
+                >
+                  <Icon name="ph:whatsapp-logo-fill" class="w-4 h-4" aria-hidden="true" />
+                  <span>Chat</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: Project-Aware Survey Form -->
+      <div class="reveal reveal-delay-1 lg:col-span-7">
+        <form
+          id="contact-form-element"
+          class="bg-white dark:bg-surface-dark rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card border border-[#DCE3D6] dark:border-slate-800 text-[#111D2E] dark:text-white space-y-5"
+          novalidate
+        >
+          <div class="space-y-1 border-b border-[#DCE3D6] dark:border-slate-800 pb-5">
+            <h3 class="text-xl sm:text-2xl font-extrabold">Formulir Jadwal Survey Lokasi</h3>
+            <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+              Pesan akan diarahkan otomatis ke nomor WhatsApp admin proyek yang Anda pilih.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Nama Lengkap -->
+            <div class="space-y-1.5">
+              <label for="namaLengkap" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+                Nama Lengkap <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="namaLengkap"
+                name="namaLengkap"
+                required
+                autocomplete="name"
+                aria-describedby="error-namaLengkap"
+                class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                placeholder="Masukkan nama Anda"
+              />
+              <p id="error-namaLengkap" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
+            </div>
+
+            <!-- Nomor WhatsApp -->
+            <div class="space-y-1.5">
+              <label for="nomorWhatsApp" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+                Nomor WhatsApp <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="tel"
+                id="nomorWhatsApp"
+                name="nomorWhatsApp"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+                aria-describedby="error-nomorWhatsApp"
+                class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                placeholder="Contoh: 0823xxxxxxxx"
+              />
+              <p id="error-nomorWhatsApp" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Email -->
+            <div class="space-y-1.5">
+              <label for="email" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+                Email <span class="text-red-600 dark:text-red-400" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                aria-describedby="error-email"
+                class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                placeholder="nama@email.com"
+              />
+              <p id="error-email" class="text-red-600 dark:text-red-400 text-xs font-bold hidden" role="alert"></p>
+            </div>
+
+            <!-- Pilihan Proyek -->
+            <div class="space-y-1.5">
+              <label for="proyekTujuan" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+                Lokasi Proyek Diminati
+              </label>
+              <div class="relative">
+                <select
+                  id="proyekTujuan"
+                  name="proyekTujuan"
+                  class="w-full appearance-none px-4 py-3 pr-10 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold cursor-pointer"
+                >
+                  {bumiProjects.map((project) => (
+                    <option value={project.adminPhone} data-project-name={project.name}>
+                      {project.shortName} ({project.areaLabel})
+                    </option>
+                  ))}
+                </select>
+                <Icon
+                  name="ph:caret-down-bold"
+                  class="w-4 h-4 text-slate-600 dark:text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Pesan Singkat -->
+          <div class="space-y-1.5">
+            <label for="pesanSingkat" class="block text-sm font-bold text-[#111D2E] dark:text-white">
+              Rencana Jadwal Survey atau Pertanyaan (Opsional)
+            </label>
+            <textarea
+              id="pesanSingkat"
+              name="pesanSingkat"
+              rows="4"
+              class="w-full px-4 py-3 border border-[#DCE3D6] dark:border-slate-700 bg-canvas-light dark:bg-canvas-dark rounded-xl focus:outline-none focus:border-brand-700 dark:focus:border-brand-400 transition-colors text-[#111D2E] dark:text-white font-semibold placeholder:text-slate-500 dark:placeholder:text-slate-400 resize-none"
+              placeholder="Contoh: Saya ingin survey lokasi akhir pekan ini dan tanya ketersediaan Tipe 50..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-brand-700 hover:bg-brand-800 text-white px-6 py-4 rounded-xl font-bold shadow-sm active:scale-[0.99] transition-all duration-200 min-h-12 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2.5"
+          >
+            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+            <span>Jadwalkan Survey</span>
+          </button>
+
+          <div id="success-message" class="hidden mt-4 p-4 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800 rounded-xl">
+            <div class="flex items-start gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-700 dark:text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <p class="text-brand-900 dark:text-brand-200 font-extrabold text-sm">Data Anda Siap Dikirim</p>
+                <p class="text-brand-800 dark:text-brand-300 text-xs sm:text-sm mt-1 font-medium">
+                  WhatsApp akan terbuka otomatis menuju admin lokasi pilihan Anda. Jika tidak terbuka, klik tombol berikut.
+                </p>
+                <a
+                  id="success-wa-link"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-3 inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl min-h-11 transition-colors"
+                >
+                  <span>Buka WhatsApp Sekarang</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { validateName, validateEmail, validateWhatsApp } from '../utils/validation';
+  import { whatsappLink } from '../utils/config';
+
+  const form = document.getElementById('contact-form-element') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const successMessage = document.getElementById('success-message');
+  const successWaLink = document.getElementById('success-wa-link') as HTMLAnchorElement | null;
+
+  const namaLengkapInput = document.getElementById('namaLengkap') as HTMLInputElement;
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  const nomorWhatsAppInput = document.getElementById('nomorWhatsApp') as HTMLInputElement;
+  const proyekSelect = document.getElementById('proyekTujuan') as HTMLSelectElement;
+  const pesanSingkatInput = document.getElementById('pesanSingkat') as HTMLTextAreaElement;
+
+  const errorNama = document.getElementById('error-namaLengkap');
+  const errorEmail = document.getElementById('error-email');
+  const errorWhatsApp = document.getElementById('error-nomorWhatsApp');
+
+  function showError(element: HTMLElement | null, message: string) {
+    if (element) {
+      element.textContent = message;
+      element.classList.remove('hidden');
+    }
+  }
+
+  function hideError(element: HTMLElement | null) {
+    if (element) {
+      element.textContent = '';
+      element.classList.add('hidden');
+    }
+  }
+
+  function setFieldState(input: HTMLInputElement, errorEl: HTMLElement | null, message: string | null) {
+    if (message) {
+      showError(errorEl, message);
+      input.classList.add('border-red-500');
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      hideError(errorEl);
+      input.classList.remove('border-red-500');
+      input.removeAttribute('aria-invalid');
+    }
+  }
+
+  function validateForm() {
+    hideError(errorNama);
+    hideError(errorEmail);
+    hideError(errorWhatsApp);
+
+    let firstInvalid: HTMLInputElement | null = null;
+
+    const nameError = validateName(namaLengkapInput.value);
+    setFieldState(namaLengkapInput, errorNama, nameError);
+    if (nameError) firstInvalid ??= namaLengkapInput;
+
+    const emailError = validateEmail(emailInput.value);
+    setFieldState(emailInput, errorEmail, emailError);
+    if (emailError) firstInvalid ??= emailInput;
+
+    const whatsappError = validateWhatsApp(nomorWhatsAppInput.value);
+    setFieldState(nomorWhatsAppInput, errorWhatsApp, whatsappError);
+    if (whatsappError) firstInvalid ??= nomorWhatsAppInput;
+
+    firstInvalid?.focus();
+    return !firstInvalid;
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    successMessage?.classList.add('hidden');
+
+    if (!validateForm()) return;
+
+    if (submitBtn) submitBtn.disabled = true;
+
+    const namaLengkap = namaLengkapInput.value.trim();
+    const email = emailInput.value.trim();
+    const nomorWhatsApp = nomorWhatsAppInput.value.trim();
+    const pesanSingkat = pesanSingkatInput.value.trim();
+    const selectedOption = proyekSelect.selectedOptions[0];
+    const projectName = selectedOption?.getAttribute('data-project-name') || selectedOption?.textContent || 'Bumi Group Pamekasan';
+    const targetAdminPhone = proyekSelect.value;
+
+    const message = `Halo Admin ${projectName}, saya ${namaLengkap} ingin menjadwalkan survey lokasi.\n\nProyek Diminati: ${projectName}\nEmail: ${email}\nNo. WA: ${nomorWhatsApp}\nPesan: ${pesanSingkat || 'Mohon info jadwal survey yang tersedia.'}`;
+    const waUrl = whatsappLink(message, targetAdminPhone);
+
+    if (successWaLink) successWaLink.href = waUrl;
+    successMessage?.classList.remove('hidden');
+
+    window.open(waUrl, '_blank', 'noopener');
+
+    form.reset();
+    [namaLengkapInput, emailInput, nomorWhatsAppInput].forEach((i) => i.classList.remove('border-red-500'));
+    if (submitBtn) submitBtn.disabled = false;
+  });
+
+  namaLengkapInput?.addEventListener('blur', () => {
+    setFieldState(namaLengkapInput, errorNama, validateName(namaLengkapInput.value));
+  });
+  emailInput?.addEventListener('blur', () => {
+    setFieldState(emailInput, errorEmail, validateEmail(emailInput.value));
+  });
+  nomorWhatsAppInput?.addEventListener('blur', () => {
+    setFieldState(nomorWhatsAppInput, errorWhatsApp, validateWhatsApp(nomorWhatsAppInput.value));
+  });
+</script>

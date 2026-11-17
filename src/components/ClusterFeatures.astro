@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import gateImg from '../assets/images/cluster_gate_pamekasan.jpg';
+
+const clusterHighlights = [
+  {
+    icon: 'ph:shield-check-bold',
+    title: 'Kawasan Klaster Tertata',
+    desc: 'Penataan blok kavling dan akses keluar-masuk klaster yang rapi demi ketenangan dan privasi penghuni.',
+  },
+  {
+    icon: 'ph:road-horizon-bold',
+    title: 'Akses Jalan Lingkungan Nyaman',
+    desc: 'Jalan lingkungan dirancang rapi dan lega sehingga memudahkan aktivitas berkendara maupun papasan kendaraan.',
+  },
+  {
+    icon: 'ph:compass-bold',
+    title: 'Tersebar di Titik Strategis',
+    desc: 'Lokasi proyek menjangkau kawasan kota hingga jalur kecamatan utama: Kangenan, Bugih, Tlanakan, dan Pademawu.',
+  },
+  {
+    icon: 'ph:sun-horizon-bold',
+    title: 'Fungsional untuk Keluarga Muda',
+    desc: 'Tata ruang dalam rumah dioptimalkan untuk pencahayaan alami, sirkulasi udara sehat, dan kebutuhan jangka panjang.',
+  },
+];
+---
+
+<section id="keunggulan-klaster" class="py-20 md:py-28 bg-canvas-light dark:bg-canvas-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+      <!-- Left: Sticky/Featured Gate Photo -->
+      <div class="lg:col-span-6 reveal">
+        <figure class="space-y-3">
+          <div class="rounded-2xl overflow-hidden border border-[#DCE3D6] dark:border-slate-800 shadow-card bg-white dark:bg-surface-dark">
+            <Image
+              src={gateImg}
+              alt="Ilustrasi gerbang kawasan klaster modern minimalis Bumi Group"
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="lazy"
+              class="w-full aspect-[4/3] object-cover"
+            />
+          </div>
+          <figcaption class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400">
+            Ilustrasi gerbang masuk kawasan klaster dengan pengawasan lingkungan tertata
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Right: Headline + 2x2 Architectural Grid -->
+      <div class="lg:col-span-6 space-y-8 reveal reveal-delay-1">
+        <div class="space-y-3">
+          <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Lingkungan Klaster yang Nyaman Dihuni dan Bernilai Tumbuh
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-base font-medium leading-relaxed">
+            Setiap kawasan Bumi Group dikembangkan agar penghuni merasakan kenyamanan lingkungan sejak hari pertama menempati rumah.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {clusterHighlights.map((item) => (
+            <div class="p-5 rounded-2xl bg-white dark:bg-surface-dark border border-[#DCE3D6] dark:border-slate-800 space-y-2.5">
+              <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/70 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-400 flex items-center justify-center">
+                <Icon name={item.icon} class="w-5 h-5" aria-hidden="true" />
+              </div>
+              <h3 class="text-[#111D2E] dark:text-white text-base sm:text-lg font-extrabold">
+                {item.title}
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

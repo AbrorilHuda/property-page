@@ -1,93 +1,129 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { whatsappLink } from '../utils/config';
-import WhatsAppIcon from './icons/WhatsAppIcon.astro';
 
 const navLinks = [
   { href: '/#hero', label: 'Beranda' },
-  { href: '/#about', label: 'Tentang Kami' },
-  { href: '/#property-types', label: 'Tipe Rumah' },
-  { href: '/#kpr-calculator', label: 'Simulasi KPR' },
-  { href: '/#facilities', label: 'Fasilitas' },
-  { href: '/#gallery', label: 'Galeri' },
+  { href: '/#proyek', label: 'Proyek' },
+  { href: '/#konsep', label: 'Konsep' },
+  { href: '/#tipe-unit', label: 'Tipe Unit' },
+  { href: '/#galeri', label: 'Galeri' },
+  { href: '/#simulasi-kpr', label: 'Simulasi KPR' },
   { href: '/report', label: 'Lapor Keluhan' },
-  { href: '/#contact', label: 'Kontak' },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200 shadow-sm no-print" aria-label="Navigasi utama">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20 gap-4">
-    <a href="/#hero" class="flex items-center gap-3 group transition-transform duration-200 hover:scale-[1.02]">
-      <img
-        src="/bumigrouplogo.png"
-        alt=""
-        class="h-10 sm:h-12 w-auto object-contain"
-        loading="eager"
-      />
-      <span class="sr-only">Bumi Group - Perumahan Terpercaya</span>
+<header class="fixed top-0 left-0 right-0 z-50 bg-canvas-light/95 dark:bg-canvas-dark/95 backdrop-blur-md border-b border-[#DCE3D6] dark:border-slate-800 no-print transition-colors duration-200">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-18 gap-4" aria-label="Navigasi utama">
+    <a href="/#hero" class="flex items-center gap-3 shrink-0 group transition-transform duration-200 hover:scale-[1.01]">
+      <span class="bg-white px-2.5 py-1.5 rounded-xl border border-slate-200/80 dark:border-transparent inline-flex items-center">
+        <img
+          src="/bumigrouplogo.png"
+          alt="Logo Bumi Group"
+          class="h-8 sm:h-9 w-auto object-contain"
+          loading="eager"
+        />
+      </span>
+      <span class="sr-only">Bumi Group - PT Bumi Griya Madani Pamekasan</span>
     </a>
 
-    <ul class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-800">
+    <ul class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-semibold text-slate-700 dark:text-slate-200">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="nav-link hover:text-brand-700 transition-all duration-200 inline-flex items-center min-h-11 relative">{link.label}</a>
+          <a
+            href={link.href}
+            class="whitespace-nowrap hover:text-brand-700 dark:hover:text-brand-400 transition-colors inline-flex items-center min-h-11"
+          >
+            {link.label}
+          </a>
         </li>
       ))}
     </ul>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2.5 shrink-0">
+      <button
+        type="button"
+        id="theme-toggle"
+        class="min-w-11 min-h-11 inline-flex items-center justify-center rounded-xl border border-[#DCE3D6] dark:border-slate-700 bg-white dark:bg-surface-dark text-slate-700 dark:text-slate-200 hover:border-brand-700 dark:hover:border-brand-400 transition-colors"
+        aria-label="Ubah mode tampilan gelap atau terang"
+      >
+        <Icon name="ph:moon-bold" class="w-5 h-5 block dark:hidden" aria-hidden="true" />
+        <Icon name="ph:sun-bold" class="w-5 h-5 hidden dark:block text-brand-400" aria-hidden="true" />
+      </button>
+
       <a
-        href={whatsappLink('Halo, saya tertarik dengan perumahan Bumi Group. Boleh minta info katalog lengkap?')}
+        href={whatsappLink('Halo Admin Bumi Group Pamekasan, saya ingin konsultasi mengenai unit perumahan yang tersedia.')}
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-2.5 bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md transition-all duration-300 min-h-11"
+        class="hidden sm:inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm active:scale-[0.98] transition-all duration-200 min-h-11 whitespace-nowrap"
       >
-        <WhatsAppIcon class="w-4 h-4 fill-current" />
-        <span>Konsultasi WA</span>
+        <Icon name="ph:whatsapp-logo-fill" class="w-4 h-4 shrink-0" aria-hidden="true" />
+        <span>Konsultasi WhatsApp</span>
       </a>
 
       <button
         id="menu-toggle"
-        class="lg:hidden flex flex-col gap-1.25 p-2 min-w-11 min-h-11 items-center justify-center rounded-lg hover:bg-slate-100 transition-colors"
+        type="button"
+        class="lg:hidden flex flex-col gap-1.25 p-2 min-w-11 min-h-11 items-center justify-center rounded-xl border border-[#DCE3D6] dark:border-slate-700 bg-white dark:bg-surface-dark hover:border-brand-700 transition-colors"
         aria-label="Buka menu navigasi"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <span class="block w-6 h-0.5 bg-slate-900 transition-all" id="bar1"></span>
-        <span class="block w-6 h-0.5 bg-slate-900 transition-all" id="bar2"></span>
-        <span class="block w-6 h-0.5 bg-slate-900 transition-all" id="bar3"></span>
+        <span class="block w-5 h-0.5 bg-slate-900 dark:bg-white transition-all" id="bar1"></span>
+        <span class="block w-5 h-0.5 bg-slate-900 dark:bg-white transition-all" id="bar2"></span>
+        <span class="block w-5 h-0.5 bg-slate-900 dark:bg-white transition-all" id="bar3"></span>
       </button>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <!-- Mobile Menu Overlay: inert saat tertutup agar tidak bisa di-Tab -->
 <div
   id="mobile-menu"
-  class="fixed inset-0 z-60 bg-slate-900 transition-transform duration-300 lg:hidden no-print"
+  class="fixed inset-0 z-60 bg-canvas-dark text-white transition-transform duration-300 lg:hidden no-print"
   role="dialog"
   aria-modal="true"
   aria-label="Menu navigasi"
   inert
 >
-  <div class="flex flex-col h-full p-6">
-    <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
-      <div class="bg-white p-2 rounded-lg">
-        <img src="/bumigrouplogo.png" alt="Logo Bumi Group" class="h-8 w-auto" />
+  <div class="flex flex-col h-full p-6 justify-between">
+    <div>
+      <div class="flex justify-between items-center mb-8 border-b border-slate-800 pb-4">
+        <div class="bg-white px-3 py-2 rounded-xl">
+          <img src="/bumigrouplogo.png" alt="Logo Bumi Group" class="h-8 w-auto" />
+        </div>
+        <button
+          id="menu-close"
+          type="button"
+          class="text-white min-w-11 min-h-11 flex items-center justify-center rounded-xl bg-surface-dark border border-slate-700 hover:border-brand-400 transition-colors"
+          aria-label="Tutup menu"
+        >
+          <Icon name="ph:x-bold" class="w-5 h-5" aria-hidden="true" />
+        </button>
       </div>
-      <button
-        id="menu-close"
-        class="text-white min-w-11 min-h-11 flex items-center justify-center text-2xl font-bold rounded-lg hover:bg-slate-800 transition-colors"
-        aria-label="Tutup menu"
-      >
-        ✕
-      </button>
+
+      <ul class="flex flex-col gap-1.5 text-white text-lg font-bold">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="mobile-nav-link block py-3 px-4 rounded-xl hover:bg-surface-dark-elevated transition-colors">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
 
-    <ul class="flex flex-col gap-2 text-white text-lg font-bold">
-      {navLinks.map((link) => (
-        <li><a href={link.href} class="mobile-nav-link block py-3 px-4 rounded-xl hover:bg-slate-800 transition-colors">{link.label}</a></li>
-      ))}
-    </ul>
+    <div class="pt-6 border-t border-slate-800">
+      <a
+        href={whatsappLink('Halo Admin Bumi Group Pamekasan, saya ingin konsultasi mengenai unit perumahan yang tersedia.')}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2.5 w-full bg-brand-700 hover:bg-brand-800 text-white py-3.5 px-5 rounded-xl font-bold min-h-12"
+      >
+        <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
+        <span>Konsultasi WhatsApp</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -96,6 +132,14 @@ const navLinks = [
   const menu = document.getElementById('mobile-menu');
   const closeBtn = document.getElementById('menu-close');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const themeToggle = document.getElementById('theme-toggle');
+
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    try {
+      localStorage.setItem('bumi-theme', isDark ? 'dark' : 'light');
+    } catch (_) {}
+  });
 
   function openMenu() {
     if (!menu) return;
@@ -125,7 +169,7 @@ const navLinks = [
 
   closeBtn?.addEventListener('click', closeMenu);
 
-  mobileLinks.forEach(link => {
+  mobileLinks.forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
 
@@ -135,8 +179,6 @@ const navLinks = [
 </script>
 
 <style is:global>
-  /* Geser menu keluar layar saat tertutup; properti translate dipakai langsung
-     agar tidak bergantung pada utility Tailwind yang ditambahkan lewat JS. */
   #mobile-menu {
     translate: 100% 0;
   }
@@ -145,14 +187,12 @@ const navLinks = [
     translate: 0 0;
   }
 
-  /* Morph hamburger menjadi ✕ saat menu terbuka */
   #menu-toggle span {
     transition-property: rotate, translate, opacity;
-    transition-duration: 0.3s;
+    transition-duration: 0.25s;
   }
 
   #menu-toggle.menu-open #bar1 { rotate: 45deg; translate: 0 7px; }
   #menu-toggle.menu-open #bar2 { opacity: 0; }
   #menu-toggle.menu-open #bar3 { rotate: -45deg; translate: 0 -7px; }
 </style>
-

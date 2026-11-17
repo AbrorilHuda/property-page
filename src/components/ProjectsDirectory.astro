@@ -1,0 +1,323 @@
+---
+import { Icon } from 'astro-icon/components';
+import { bumiProjects, buildMapsUrl } from '../data/bumiGroup';
+import { whatsappLink } from '../utils/config';
+
+const districtFilters = [
+  { value: 'all', label: 'Semua Area (6)' },
+  { value: 'Pamekasan', label: 'Kec. Pamekasan' },
+  { value: 'Tlanakan', label: 'Kec. Tlanakan' },
+  { value: 'Pademawu', label: 'Kec. Pademawu' },
+];
+
+const initialProject = bumiProjects[1]; // Bumi Kangenan Cluster sebagai default proyek aktif
+---
+
+<section id="proyek" class="py-20 md:py-28 bg-canvas-muted dark:bg-surface-dark border-y border-[#DCE3D6] dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- Vertical Stack Section Header (Eyebrow #2) -->
+    <div class="reveal max-w-2xl mb-10 space-y-3">
+      <p class="text-xs font-bold uppercase tracking-[0.16em] text-brand-700 dark:text-brand-400">
+        Portofolio Pamekasan
+      </p>
+      <h2 class="text-[#111D2E] dark:text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Titik Proyek &amp; Kantor Pemasaran Resmi
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg font-medium leading-relaxed">
+        Pilih kawasan hunian atau kantor pemasaran Bumi Group di Kabupaten Pamekasan untuk melihat alamat lengkap, jam layanan, dan kontak admin terkait.
+      </p>
+    </div>
+
+    <!-- District Filter Pills -->
+    <div class="reveal flex flex-wrap gap-2.5 mb-8" role="group" aria-label="Filter proyek berdasarkan kecamatan">
+      {districtFilters.map((f, idx) => (
+        <button
+          type="button"
+          data-district-filter={f.value}
+          aria-pressed={idx === 0 ? 'true' : 'false'}
+          class={`district-filter-btn min-h-11 px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-colors border whitespace-nowrap ${
+            idx === 0
+              ? 'bg-[#111D2E] text-white border-[#111D2E] dark:bg-brand-700 dark:border-brand-700'
+              : 'bg-white dark:bg-surface-dark-elevated text-slate-700 dark:text-slate-200 border-[#DCE3D6] dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-400'
+          }`}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Master-Detail Directory -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+      <!-- Left: Project Selector List -->
+      <div class="lg:col-span-5 space-y-3" id="project-selector-list" role="tablist" aria-label="Daftar proyek Bumi Group">
+        {bumiProjects.map((project) => {
+          const isDefault = project.id === initialProject.id;
+          return (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={isDefault ? 'true' : 'false'}
+              data-project-id={project.id}
+              data-district={project.district}
+              data-name={project.name}
+              data-category={project.category}
+              data-area={project.areaLabel}
+              data-summary={project.summary}
+              data-address={project.address}
+              data-hours={project.hours || 'Konfirmasi jadwal melalui Admin proyek'}
+              data-admin-label={project.adminLabel}
+              data-admin-phone={project.adminPhone}
+              data-secondary-phone={project.secondaryPhone || ''}
+              data-highlight={project.unitHighlight}
+              data-maps-url={buildMapsUrl(project.mapsQuery)}
+              data-wa-url={whatsappLink(
+                `Halo ${project.adminLabel}, saya ingin info unit dan jadwal survey untuk ${project.name}.`,
+                project.adminPhone
+              )}
+              class={`project-tab w-full text-left p-5 rounded-2xl border transition-all duration-200 flex items-start justify-between gap-4 ${
+                isDefault
+                  ? 'bg-white dark:bg-surface-dark-elevated border-brand-700 dark:border-brand-400 shadow-card'
+                  : 'bg-white/75 dark:bg-canvas-dark/60 border-[#DCE3D6] dark:border-slate-800 hover:bg-white dark:hover:bg-surface-dark-elevated hover:border-slate-300 dark:hover:border-slate-600'
+              }`}
+            >
+              <div class="space-y-1.5 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
+                  <span class="text-brand-700 dark:text-brand-400">{project.category}</span>
+                  <span class="text-slate-400" aria-hidden="true">/</span>
+                  <span class="text-slate-600 dark:text-slate-400">{project.areaLabel}</span>
+                </div>
+                <h3 class="text-[#111D2E] dark:text-white text-base sm:text-lg font-extrabold leading-snug">
+                  {project.shortName}
+                </h3>
+                <p class="text-xs font-semibold text-slate-600 dark:text-slate-400 truncate">
+                  {project.unitHighlight}
+                </p>
+              </div>
+              <span
+                class={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                  isDefault
+                    ? 'bg-brand-700 text-white'
+                    : 'bg-canvas-muted dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                }`}
+                aria-hidden="true"
+              >
+                <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <!-- Right: Active Project Architectural Detail Panel -->
+      <div class="lg:col-span-7 lg:sticky lg:top-24">
+        <div
+          id="project-detail-panel"
+          class="bg-white dark:bg-surface-dark-elevated rounded-2xl p-6 sm:p-8 lg:p-10 border border-[#DCE3D6] dark:border-slate-700 shadow-card space-y-7"
+          role="tabpanel"
+          aria-live="polite"
+        >
+          <div class="flex flex-wrap items-start justify-between gap-4 border-b border-[#DCE3D6] dark:border-slate-700 pb-6">
+            <div class="space-y-2">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-800 dark:text-brand-300 text-xs font-bold">
+                <Icon name="ph:map-pin-fill" class="w-3.5 h-3.5" aria-hidden="true" />
+                <span id="detail-area">{initialProject.areaLabel}</span>
+              </div>
+              <h3 id="detail-name" class="text-[#111D2E] dark:text-white text-2xl sm:text-3xl font-extrabold">
+                {initialProject.name}
+              </h3>
+            </div>
+            <span id="detail-highlight" class="px-3.5 py-1.5 rounded-xl bg-canvas-muted dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-[#DCE3D6] dark:border-slate-700">
+              {initialProject.unitHighlight}
+            </span>
+          </div>
+
+          <p id="detail-summary" class="text-slate-700 dark:text-slate-300 text-base leading-relaxed font-medium">
+            {initialProject.summary}
+          </p>
+
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+            <div class="p-4 rounded-xl bg-canvas-light dark:bg-canvas-dark/70 border border-[#DCE3D6] dark:border-slate-800 space-y-1.5 sm:col-span-2">
+              <dt class="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400">
+                <Icon name="ph:navigation-arrow-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400" aria-hidden="true" />
+                <span>Alamat Lokasi</span>
+              </dt>
+              <dd id="detail-address" class="text-sm font-semibold text-[#111D2E] dark:text-slate-100 leading-relaxed">
+                {initialProject.address}
+              </dd>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas-light dark:bg-canvas-dark/70 border border-[#DCE3D6] dark:border-slate-800 space-y-1.5">
+              <dt class="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400">
+                <Icon name="ph:clock-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400" aria-hidden="true" />
+                <span>Jam Operasional</span>
+              </dt>
+              <dd id="detail-hours" class="text-sm font-semibold text-[#111D2E] dark:text-slate-100 leading-relaxed">
+                {initialProject.hours}
+              </dd>
+            </div>
+
+            <div class="p-4 rounded-xl bg-canvas-light dark:bg-canvas-dark/70 border border-[#DCE3D6] dark:border-slate-800 space-y-1.5">
+              <dt class="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400">
+                <Icon name="ph:phone-call-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400" aria-hidden="true" />
+                <span id="detail-admin-label">{initialProject.adminLabel}</span>
+              </dt>
+              <dd class="text-sm font-extrabold text-[#111D2E] dark:text-white flex flex-wrap items-center gap-2">
+                <span id="detail-admin-phone">{initialProject.adminPhone}</span>
+                <span id="detail-secondary-phone" class="hidden text-xs font-bold text-slate-600 dark:text-slate-300"></span>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a
+              id="detail-wa-btn"
+              href={whatsappLink(
+                `Halo ${initialProject.adminLabel}, saya ingin info unit dan jadwal survey untuk ${initialProject.name}.`,
+                initialProject.adminPhone
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 bg-brand-700 hover:bg-brand-800 text-white px-6 py-3.5 rounded-xl text-sm font-bold shadow-sm active:scale-[0.98] transition-all min-h-12 whitespace-nowrap"
+            >
+              <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 shrink-0" aria-hidden="true" />
+              <span>Chat Admin Proyek</span>
+            </a>
+
+            <a
+              id="detail-maps-btn"
+              href={buildMapsUrl(initialProject.mapsQuery)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-canvas-light dark:bg-canvas-dark hover:bg-canvas-muted dark:hover:bg-slate-800 border border-[#DCE3D6] dark:border-slate-700 text-[#111D2E] dark:text-white px-6 py-3.5 rounded-xl text-sm font-bold active:scale-[0.98] transition-all min-h-12 whitespace-nowrap"
+            >
+              <Icon name="ph:map-trifold-bold" class="w-4 h-4 text-brand-700 dark:text-brand-400 shrink-0" aria-hidden="true" />
+              <span>Buka Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.district-filter-btn');
+  const projectTabs = document.querySelectorAll<HTMLButtonElement>('.project-tab');
+
+  const detailArea = document.getElementById('detail-area');
+  const detailName = document.getElementById('detail-name');
+  const detailHighlight = document.getElementById('detail-highlight');
+  const detailSummary = document.getElementById('detail-summary');
+  const detailAddress = document.getElementById('detail-address');
+  const detailHours = document.getElementById('detail-hours');
+  const detailAdminLabel = document.getElementById('detail-admin-label');
+  const detailAdminPhone = document.getElementById('detail-admin-phone');
+  const detailSecondaryPhone = document.getElementById('detail-secondary-phone');
+  const detailWaBtn = document.getElementById('detail-wa-btn') as HTMLAnchorElement | null;
+  const detailMapsBtn = document.getElementById('detail-maps-btn') as HTMLAnchorElement | null;
+
+  function activateTab(selected: HTMLButtonElement) {
+    projectTabs.forEach((tab) => {
+      const active = tab === selected;
+      tab.setAttribute('aria-selected', String(active));
+      tab.classList.toggle('bg-white', active);
+      tab.classList.toggle('dark:bg-surface-dark-elevated', active);
+      tab.classList.toggle('border-brand-700', active);
+      tab.classList.toggle('dark:border-brand-400', active);
+      tab.classList.toggle('shadow-card', active);
+
+      tab.classList.toggle('bg-white/75', !active);
+      tab.classList.toggle('dark:bg-canvas-dark/60', !active);
+      tab.classList.toggle('border-[#DCE3D6]', !active);
+      tab.classList.toggle('dark:border-slate-800', !active);
+
+      const badge = tab.querySelector('span.w-9');
+      if (badge) {
+        badge.classList.toggle('bg-brand-700', active);
+        badge.classList.toggle('text-white', active);
+        badge.classList.toggle('bg-canvas-muted', !active);
+        badge.classList.toggle('dark:bg-slate-800', !active);
+        badge.classList.toggle('text-slate-600', !active);
+        badge.classList.toggle('dark:text-slate-300', !active);
+      }
+    });
+
+    if (detailArea) detailArea.textContent = selected.dataset.area || '';
+    if (detailName) detailName.textContent = selected.dataset.name || '';
+    if (detailHighlight) detailHighlight.textContent = selected.dataset.highlight || '';
+    if (detailSummary) detailSummary.textContent = selected.dataset.summary || '';
+    if (detailAddress) detailAddress.textContent = selected.dataset.address || '';
+    if (detailHours) detailHours.textContent = selected.dataset.hours || '';
+    if (detailAdminLabel) detailAdminLabel.textContent = selected.dataset.adminLabel || '';
+    if (detailAdminPhone) detailAdminPhone.textContent = selected.dataset.adminPhone || '';
+
+    if (detailSecondaryPhone) {
+      const sec = selected.dataset.secondaryPhone;
+      if (sec) {
+        detailSecondaryPhone.textContent = `/ ${sec}`;
+        detailSecondaryPhone.classList.remove('hidden');
+      } else {
+        detailSecondaryPhone.textContent = '';
+        detailSecondaryPhone.classList.add('hidden');
+      }
+    }
+
+    if (detailWaBtn && selected.dataset.waUrl) {
+      detailWaBtn.href = selected.dataset.waUrl;
+    }
+    if (detailMapsBtn && selected.dataset.mapsUrl) {
+      detailMapsBtn.href = selected.dataset.mapsUrl;
+    }
+  }
+
+  projectTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      activateTab(tab);
+      if (window.innerWidth < 1024) {
+        document.getElementById('project-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedDistrict = btn.dataset.districtFilter || 'all';
+
+      filterBtns.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-pressed', String(active));
+        b.classList.toggle('bg-[#111D2E]', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('border-[#111D2E]', active);
+        b.classList.toggle('dark:bg-brand-700', active);
+        b.classList.toggle('dark:border-brand-700', active);
+
+        b.classList.toggle('bg-white', !active);
+        b.classList.toggle('dark:bg-surface-dark-elevated', !active);
+        b.classList.toggle('text-slate-700', !active);
+        b.classList.toggle('dark:text-slate-200', !active);
+        b.classList.toggle('border-[#DCE3D6]', !active);
+        b.classList.toggle('dark:border-slate-700', !active);
+      });
+
+      let firstVisible: HTMLButtonElement | null = null;
+      let currentSelectedVisible = false;
+
+      projectTabs.forEach((tab) => {
+        const show = selectedDistrict === 'all' || tab.dataset.district === selectedDistrict;
+        tab.style.display = show ? 'flex' : 'none';
+        if (show && !firstVisible) firstVisible = tab;
+        if (show && tab.getAttribute('aria-selected') === 'true') {
+          currentSelectedVisible = true;
+        }
+      });
+
+      if (!currentSelectedVisible && firstVisible) {
+        activateTab(firstVisible);
+      }
+    });
+  });
+</script>

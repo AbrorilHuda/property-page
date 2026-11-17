@@ -1,15 +1,38 @@
 ---
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/plus-jakarta-sans';
+import { companyProfile } from '../data/bumiGroup';
+
 interface Props {
   title?: string;
   description?: string;
 }
 
 const {
-  title = 'Bumi Group - Pilihan Tepat, Hunian Masa Depan Anda | Perumahan Terpercaya',
-  description = 'Hunian impian dengan lokasi strategis, legalitas aman, lingkungan asri, dan harga terjangkau. Konsultasi gratis, tanpa komitmen.',
+  title = 'Bumi Group - Hunian Modern Minimalis di Pamekasan | PT Bumi Griya Madani',
+  description = 'PT Bumi Griya Madani (Bumi Group), pengembang perumahan klaster modern minimalis di Pamekasan, Madura. Tersedia unit di Kangenan, Tlanakan, Pademawu, dan Bugih.',
 } = Astro.props;
 
 const siteUrl = 'https://bumi-group.com';
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  name: `${companyProfile.brandName} (${companyProfile.legalName})`,
+  url: siteUrl,
+  logo: `${siteUrl}/bumigrouplogo.png`,
+  email: companyProfile.email,
+  telephone: '+6282330443131',
+  description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Jl. Raya Kangenan No. 38, Pocok, Laden',
+    addressLocality: 'Pamekasan',
+    addressRegion: 'Jawa Timur',
+    postalCode: '69317',
+    addressCountry: 'ID',
+  },
+  sameAs: [companyProfile.instagramUrl],
+};
 ---
 
 <!DOCTYPE html>
@@ -17,13 +40,23 @@ const siteUrl = 'https://bumi-group.com';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#020617" />
+  <meta name="theme-color" content="#F7F8F5" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0B121C" media="(prefers-color-scheme: dark)" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={siteUrl} />
 
-  <!-- Tandai JS aktif sedini mungkin; animasi reveal hanya berjalan bila JS hidup -->
-  <script is:inline>document.documentElement.classList.add('js');</script>
+  <!-- Init JS flag dan preferensi tema sebelum render untuk mencegah FOUC -->
+  <script is:inline>
+    document.documentElement.classList.add('js');
+    try {
+      const saved = localStorage.getItem('bumi-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (_) {}
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -34,46 +67,26 @@ const siteUrl = 'https://bumi-group.com';
   <meta property="og:locale" content="id_ID" />
 
   <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Bumi Group",
-      "url": "https://bumi-group.com",
-      "logo": "https://bumi-group.com/bumigrouplogo.png",
-      "description": "Developer perumahan terpercaya dengan hunian berkualitas, lokasi strategis, dan lingkungan asri.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Jakarta",
-        "addressCountry": "ID"
-      }
-    }
-  </script>
-
-  <!-- Fonts: preconnect + link non-blocking (menggantikan @import CSS) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
   <link rel="icon" type="image/png" href="/bumigrouplogo.png" />
 </head>
-<body>
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:bg-brand-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+<body class="bg-canvas-light text-[#111D2E] dark:bg-canvas-dark dark:text-[#F1F5F2] transition-colors duration-200">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-brand-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-xl focus:font-bold">
     Lewati ke konten utama
   </a>
   <slot />
 
-  <!-- Scroll Reveal Motion Controller -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const observerOptions = {
         root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.15
+        rootMargin: '0px 0px -48px 0px',
+        threshold: 0.12,
       };
 
       const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
             obs.unobserve(entry.target);
@@ -81,7 +94,7 @@ const siteUrl = 'https://bumi-group.com';
         });
       }, observerOptions);
 
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     });
   </script>
 </body>
